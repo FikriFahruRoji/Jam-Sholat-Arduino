@@ -28,6 +28,7 @@
                         android:orientation="horizontal">
 
                         <android.support.design.widget.TextInputLayout
+                            android:id="@+id/layout_input_geo"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.85">
@@ -65,6 +66,7 @@
                     android:orientation="vertical">
 
                     <android.support.design.widget.TextInputLayout
+                        android:id="@+id/layout_input_nama_masjid"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
@@ -93,6 +95,7 @@
                     android:weightSum="1">
 
                     <android.support.design.widget.TextInputLayout
+                        android:id="@+id/layout_input_alamat_masjid"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
@@ -125,6 +128,7 @@
                         android:text="@string/kecerahan" />
 
                     <RadioGroup
+                        android:id="@+id/rg_brights"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
@@ -173,6 +177,7 @@
                         android:text="@string/buzzer" />
 
                     <RadioGroup
+                        android:id="@+id/rg_buzzer"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">

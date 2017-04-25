@@ -1,7 +1,5 @@
 package id.ncr.jamsholatapp.activities;
 
-import android.bluetooth.BluetoothAdapter;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -27,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+//      button bluetooth and Text header
         btn_bluetooth = (Button)findViewById(R.id.button_bluetooth);
         text_bluetooth_stat = (TextView)findViewById(R.id.text_bluetooth_status);
 
@@ -39,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         btn_bluetooth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
 
             }
         });
