@@ -27,215 +27,151 @@
                         android:text="Koreksi Waktu (Dalam Menit)" />
 
                     <LinearLayout
+                        android:layout_marginTop="@dimen/activity_frame_margin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <RadioGroup style="@style/radio_correction">
-
-                            <RadioButton
-
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:checked="true"
-                                android:text="(+)" />
-
-                            <RadioButton
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="(-)" />
-                        </RadioGroup>
+                        <Spinner
+                            android:id="@+id/spin_isya"
+                            style="@style/spin"/>
 
                         <android.support.design.widget.TextInputLayout
                             android:id="@+id/layout_input_correct_isya"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.7">
+                            android:layout_weight="0.8">
 
                             <EditText
                                 android:id="@+id/input_correct_isya"
                                 style="@style/text_input_numb"
                                 android:hint="@string/isya"
-                                android:maxLength="50" />
+                                android:maxLength="2" />
                         </android.support.design.widget.TextInputLayout>
                     </LinearLayout>
 
                     <LinearLayout
+                        android:layout_marginTop="@dimen/activity_frame_margin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <RadioGroup
-                            android:id="@+id/rg_shubuh"
-                            style="@style/radio_correction">
-
-                            <RadioButton
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:checked="true"
-                                android:text="(+)" />
-
-                            <RadioButton
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="(-)" />
-                        </RadioGroup>
+                        <Spinner
+                            android:id="@+id/spin_shubuh"
+                            style="@style/spin"/>
 
                         <android.support.design.widget.TextInputLayout
                             android:id="@+id/layout_input_correct_shubuh"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.7">
+                            android:layout_weight="0.8">
 
                             <EditText
                                 android:id="@+id/input_correct_shubuh"
                                 style="@style/text_input_numb"
                                 android:hint="@string/shubuh"
-                                android:maxLength="50" />
+                                android:maxLength="2" />
                         </android.support.design.widget.TextInputLayout>
                     </LinearLayout>
 
                     <LinearLayout
+                        android:layout_marginTop="@dimen/activity_frame_margin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <RadioGroup
-                            android:id="@+id/rg_syurq"
-                            style="@style/radio_correction">
-
-                            <RadioButton
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:checked="true"
-                                android:text="(+)" />
-
-                            <RadioButton
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="(-)" />
-                        </RadioGroup>
+                        <Spinner
+                            android:id="@+id/spin_syuruq"
+                            style="@style/spin"/>
 
                         <android.support.design.widget.TextInputLayout
                             android:id="@+id/layout_input_correct_syuruq"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.7">
+                            android:layout_weight="0.8">
 
                             <EditText
                                 android:id="@+id/input_correct_syuruq"
                                 style="@style/text_input_numb"
                                 android:hint="@string/syuruq"
-                                android:maxLength="50" />
+                                android:maxLength="2" />
                         </android.support.design.widget.TextInputLayout>
                     </LinearLayout>
 
                     <LinearLayout
+                        android:layout_marginTop="@dimen/activity_frame_margin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <RadioGroup
-                            android:id="@+id/rg_dzuhur"
-                            style="@style/radio_correction">
-
-                            <RadioButton
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:checked="true"
-                                android:text="(+)" />
-
-                            <RadioButton
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="(-)" />
-                        </RadioGroup>
+                        <Spinner
+                            android:id="@+id/spin_dzuhur"
+                            style="@style/spin"/>
 
                         <android.support.design.widget.TextInputLayout
                             android:id="@+id/layout_input_correct_dzuhur"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.7">
+                            android:layout_weight="0.8">
 
                             <EditText
                                 android:id="@+id/input_correct_dzuhur"
                                 style="@style/text_input_numb"
                                 android:hint="Dzuhur"
-                                android:maxLength="50" />
+                                android:maxLength="2" />
                         </android.support.design.widget.TextInputLayout>
                     </LinearLayout>
 
                     <LinearLayout
+                        android:layout_marginTop="@dimen/activity_frame_margin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <RadioGroup
-                            android:id="@+id/rg_ashar"
-                            style="@style/radio_correction">
-
-                            <RadioButton
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:checked="true"
-                                android:text="(+)" />
-
-                            <RadioButton
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="(-)" />
-                        </RadioGroup>
+                        <Spinner
+                            android:id="@+id/spin_ashar"
+                            style="@style/spin"/>
 
                         <android.support.design.widget.TextInputLayout
                             android:id="@+id/layout_input_correct_ashar"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.7">
+                            android:layout_weight="0.8">
 
                             <EditText
                                 android:id="@+id/input_correct_ashar"
                                 style="@style/text_input_numb"
                                 android:hint="@string/ashar"
-                                android:maxLength="50" />
+                                android:maxLength="2" />
                         </android.support.design.widget.TextInputLayout>
                     </LinearLayout>
 
                     <LinearLayout
+                        android:layout_marginTop="@dimen/activity_frame_margin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <RadioGroup
-                            android:id="@+id/rg_maghrib"
-                            style="@style/radio_correction">
-
-                            <RadioButton
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:checked="true"
-                                android:text="(+)" />
-
-                            <RadioButton
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="(-)" />
-                        </RadioGroup>
+                        <Spinner
+                            android:id="@+id/spin_maghrib"
+                            style="@style/spin"/>
 
                         <android.support.design.widget.TextInputLayout
                             android:id="@+id/layout_input_correct_maghrib"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.7">
+                            android:layout_weight="0.8">
 
                             <EditText
                                 android:id="@+id/input_correct_maghrib"
                                 style="@style/text_input_numb"
                                 android:hint="@string/maghrib"
-                                android:maxLength="50" />
+                                android:maxLength="2" />
                         </android.support.design.widget.TextInputLayout>
                     </LinearLayout>
 
                     <Button
+                        android:layout_marginTop="@dimen/activity_frame_margin"
                         android:id="@+id/btn_send_correction"
                         style="@style/button_send" />
                 </LinearLayout>

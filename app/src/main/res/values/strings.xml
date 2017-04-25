@@ -6,7 +6,11 @@
     <string name="nav_menu_correction">Koreksi</string>
     <string name="nav_menu_info">Info Jum\'at</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+    <string-array name="cor">
+        <item>-</item>
+        <item>+</item>
+    </string-array>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="jeda_layar">Jeda Layar (Dalam Menit)</string>
     <string name="jeda_iqomah">Jeda Iqomah (Dalam Menit)</string>
