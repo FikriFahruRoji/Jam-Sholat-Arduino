@@ -1,6 +1,9 @@
 package id.ncr.jamsholatapp.activities;
 
+import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
@@ -46,8 +49,15 @@ public class MainActivity extends AppCompatActivity {
         // Check if Bluetooth is supported by the device
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (mBluetoothAdapter == null) {
-            // Device does not support Bluetooth
-            finish();
+            new AlertDialog.Builder(this)
+                    .setMessage("Bluetooth is not supported by the device")
+                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        @SuppressWarnings("deprecation")
+                        public void onClick(DialogInterface dialog, int id) {
+                            finish();
+                        }
+                    })
+                    .show();
         }
 
         btn_bluetooth.setOnClickListener(new View.OnClickListener() {
