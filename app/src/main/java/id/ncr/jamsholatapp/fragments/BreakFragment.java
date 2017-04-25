@@ -24,8 +24,8 @@ public class BreakFragment extends Fragment implements View.OnClickListener {
     private TextInputLayout layout_tx_iqoma_isya, layout_tx_iqoma_shubuh, layout_tx_iqoma_zhuhur, layout_tx_iqoma_ashar, layout_tx_iqoma_maghrib,
             layout_tx_layar_isya, layout_tx_layar_shubuh, layout_tx_layar_zhuhur, layout_tx_layar_ashar, layout_tx_layar_maghrib;
 
-    private String iqoma_isya, iqoma_shubuh, iqoma_zhuhur, iqoma_ashar, iqoma_maghrib,
-                    layar_isya, layar_shubuh, layar_zhuhur, layar_ashar, layar_maghrib;
+    private String iqoma_isya = "", iqoma_shubuh = "", iqoma_zhuhur = "", iqoma_ashar = "", iqoma_maghrib = "",
+                    layar_isya = "", layar_shubuh = "", layar_zhuhur = "", layar_ashar = "", layar_maghrib = "";
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
