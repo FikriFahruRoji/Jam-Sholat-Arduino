@@ -24,6 +24,8 @@ public class BreakFragment extends Fragment implements View.OnClickListener {
     private TextInputLayout layout_tx_iqoma_isya, layout_tx_iqoma_shubuh, layout_tx_iqoma_zhuhur, layout_tx_iqoma_ashar, layout_tx_iqoma_maghrib,
             layout_tx_layar_isya, layout_tx_layar_shubuh, layout_tx_layar_zhuhur, layout_tx_layar_ashar, layout_tx_layar_maghrib;
 
+    private String iqoma_isya, iqoma_shubuh, iqoma_zhuhur, iqoma_ashar, iqoma_maghrib,
+                    layar_isya, layar_shubuh, layar_zhuhur, layar_ashar, layar_maghrib;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -74,10 +76,36 @@ public class BreakFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view){
         switch (view.getId()) {
             case R.id.btn_send_iqoma:
-                Toast.makeText(getContext(), "asdasdasdas", Toast.LENGTH_SHORT).show();
+                if (validateName(layout_tx_iqoma_isya, tx_iqoma_isya, "Tidak boleh kosong") &&
+                        validateName(layout_tx_iqoma_shubuh, tx_iqoma_shubuh, "Tidak boleh kosong") &&
+                        validateName(layout_tx_iqoma_zhuhur, tx_iqoma_zhuhur, "Tidak boleh kosong") &&
+                        validateName(layout_tx_iqoma_ashar, tx_iqoma_ashar, "Tidak boleh kosong") &&
+                        validateName(layout_tx_iqoma_maghrib, tx_iqoma_maghrib, "Tidak boleh kosong")) {
+
+                    iqoma_isya = String.valueOf(tx_iqoma_isya.getText());
+                    iqoma_shubuh = String.valueOf(tx_iqoma_shubuh.getText());
+                    iqoma_zhuhur = String.valueOf(tx_iqoma_zhuhur.getText());
+                    iqoma_ashar = String.valueOf(tx_iqoma_ashar.getText());
+                    iqoma_maghrib = String.valueOf(tx_iqoma_maghrib.getText());
+
+                    Toast.makeText(getContext(), iqoma_isya + "\n" + iqoma_shubuh + "\n" + iqoma_zhuhur + "\n" + iqoma_ashar + "\n" + iqoma_maghrib, Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.btn_send_layar:
-                Toast.makeText(getContext(), "qweqweqweqwe", Toast.LENGTH_SHORT).show();
+                if (validateName(layout_tx_layar_isya, tx_layar_isya, "Tidak boleh kosong") &&
+                        validateName(layout_tx_layar_shubuh, tx_layar_shubuh, "Tidak boleh kosong") &&
+                        validateName(layout_tx_layar_zhuhur, tx_layar_zhuhur, "Tidak boleh kosong") &&
+                        validateName(layout_tx_layar_ashar, tx_layar_ashar, "Tidak boleh kosong") &&
+                        validateName(layout_tx_layar_maghrib, tx_layar_maghrib, "Tidak boleh kosong")) {
+
+                    layar_isya = String.valueOf(tx_layar_isya.getText());
+                    layar_shubuh = String.valueOf(tx_layar_shubuh.getText());
+                    layar_zhuhur = String.valueOf(tx_layar_zhuhur.getText());
+                    layar_ashar = String.valueOf(tx_layar_ashar.getText());
+                    layar_maghrib = String.valueOf(tx_layar_maghrib.getText());
+
+                    Toast.makeText(getContext(), layar_isya + "\n" + layar_shubuh + "\n" + layar_zhuhur + "\n" + layar_ashar + "\n" + layar_maghrib, Toast.LENGTH_SHORT).show();
+                }
                 break;
             default:
                 break;

@@ -23,6 +23,8 @@ public class GeneralFragment extends Fragment implements View.OnClickListener {
     private EditText tx_geo, tx_name, tx_addres;
     private TextInputLayout layout_tx_geo, layout_tx_name, layout_tx_addres;
     private RadioGroup rg_buzzer, rg_brights;
+
+    private String longitude = "7.2512", latitude = "107.9236", nama_masjid = "", alamat_masjid = "";
     private int brights_value = 2;
     private boolean buzzer_value = false;
 
@@ -114,15 +116,17 @@ public class GeneralFragment extends Fragment implements View.OnClickListener {
         switch (view.getId()) {
             case R.id.btn_send_geo:
                 if (validateName(layout_tx_geo, tx_geo, "Lokasi tidak boleh kosong"))
-                    Toast.makeText(getContext(), tx_geo.getText(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), longitude +';'+latitude, Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btn_send_masjid_name:
                 if (validateName(layout_tx_name, tx_name, "Nama tidak boleh kosong"))
-                    Toast.makeText(getContext(), tx_name.getText(), Toast.LENGTH_SHORT).show();
+                    nama_masjid = String.valueOf(tx_name.getText());
+                    Toast.makeText(getContext(), nama_masjid, Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btn_send_masjid_addres:
                 if (validateName(layout_tx_addres, tx_addres, "Alamat tidak boleh kosong"))
-                    Toast.makeText(getContext(), tx_addres.getText(), Toast.LENGTH_SHORT).show();
+                    alamat_masjid = String.valueOf(tx_addres.getText());
+                Toast.makeText(getContext(), alamat_masjid, Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btn_send_brights:
                 Toast.makeText(getContext(), String.valueOf(brights_value), Toast.LENGTH_SHORT).show();
