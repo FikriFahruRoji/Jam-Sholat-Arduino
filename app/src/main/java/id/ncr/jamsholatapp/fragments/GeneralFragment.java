@@ -24,9 +24,7 @@ public class GeneralFragment extends Fragment implements View.OnClickListener {
     private TextInputLayout layout_tx_geo, layout_tx_name, layout_tx_addres;
     private RadioGroup rg_buzzer, rg_brights;
 
-    private String longitude = "7.2512", latitude = "107.9236", nama_masjid = "", alamat_masjid = "";
-    private int brights_value = 2;
-    private boolean buzzer_value = false;
+    private String longitude = "7.2512", latitude = "107.9236", nama_masjid = "", alamat_masjid = "", brights_value = "150", buzzer_value = "0";
 
     @Nullable
     @Override
@@ -69,11 +67,11 @@ public class GeneralFragment extends Fragment implements View.OnClickListener {
                 if (isChecked)
                 {
                     if (checkedRadioButton.getText().equals(getString(R.string.terang))) {
-                        brights_value = 3;
+                        brights_value = "255";
                     } else if (checkedRadioButton.getText().equals(getString(R.string.sedang))) {
-                        brights_value = 2;
+                        brights_value = "150";
                     } else {
-                        brights_value = 1;
+                        brights_value = "100";
                     }
                 }
             }
@@ -89,9 +87,9 @@ public class GeneralFragment extends Fragment implements View.OnClickListener {
                 if (isChecked)
                 {
                     if (checkedRadioButton.getText().equals(getString(R.string.hidup))) {
-                        buzzer_value = true;
+                        buzzer_value = "1";
                     } else {
-                        buzzer_value = false;
+                        buzzer_value = "0";
                     }
                 }
             }
@@ -129,10 +127,10 @@ public class GeneralFragment extends Fragment implements View.OnClickListener {
                 Toast.makeText(getContext(), alamat_masjid, Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btn_send_brights:
-                Toast.makeText(getContext(), String.valueOf(brights_value), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), brights_value, Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btn_send_buzzer:
-                Toast.makeText(getContext(), String.valueOf(buzzer_value), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), buzzer_value, Toast.LENGTH_SHORT).show();
                 break;
             default:
                 break;

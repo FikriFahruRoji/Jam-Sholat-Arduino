@@ -103,7 +103,7 @@
                             android:id="@+id/input_alamat_masjid"
                             style="@style/text_input"
                             android:hint="@string/alamat_masjid"
-                            android:maxLength="50" />
+                            android:maxLength="150" />
                     </android.support.design.widget.TextInputLayout>
 
                     <Button

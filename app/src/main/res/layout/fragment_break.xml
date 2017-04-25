@@ -35,7 +35,7 @@
                             android:id="@+id/input_iqoma_isya"
                             style="@style/text_input_numb"
                             android:hint="@string/isya"
-                            android:maxLength="50" />
+                            android:maxLength="2" />
                     </android.support.design.widget.TextInputLayout>
 
                     <android.support.design.widget.TextInputLayout
@@ -47,7 +47,7 @@
                             android:id="@+id/input_iqoma_shubuh"
                             style="@style/text_input_numb"
                             android:hint="@string/shubuh"
-                            android:maxLength="50" />
+                            android:maxLength="2" />
                     </android.support.design.widget.TextInputLayout>
 
                     <android.support.design.widget.TextInputLayout
@@ -59,7 +59,7 @@
                             android:id="@+id/input_iqoma_zhuhur"
                             style="@style/text_input_numb"
                             android:hint="@string/zhuhur"
-                            android:maxLength="50" />
+                            android:maxLength="2" />
                     </android.support.design.widget.TextInputLayout>
 
                     <android.support.design.widget.TextInputLayout
@@ -71,7 +71,7 @@
                             android:id="@+id/input_iqoma_ashar"
                             style="@style/text_input_numb"
                             android:hint="@string/ashar"
-                            android:maxLength="50" />
+                            android:maxLength="2" />
                     </android.support.design.widget.TextInputLayout>
 
                     <android.support.design.widget.TextInputLayout
@@ -83,7 +83,7 @@
                             android:id="@+id/input_iqoma_maghrib"
                             style="@style/text_input_numb"
                             android:hint="@string/maghrib"
-                            android:maxLength="50" />
+                            android:maxLength="2" />
                     </android.support.design.widget.TextInputLayout>
 
                     <Button
@@ -115,7 +115,7 @@
                             android:id="@+id/input_layar_isya"
                             style="@style/text_input_numb"
                             android:hint="@string/isya"
-                            android:maxLength="50" />
+                            android:maxLength="2" />
                     </android.support.design.widget.TextInputLayout>
 
                     <android.support.design.widget.TextInputLayout
@@ -127,7 +127,7 @@
                             android:id="@+id/input_layar_shubuh"
                             style="@style/text_input_numb"
                             android:hint="@string/shubuh"
-                            android:maxLength="50" />
+                            android:maxLength="2" />
                     </android.support.design.widget.TextInputLayout>
 
                     <android.support.design.widget.TextInputLayout
@@ -139,7 +139,7 @@
                             android:id="@+id/input_layar_zhuhur"
                             style="@style/text_input_numb"
                             android:hint="@string/zhuhur"
-                            android:maxLength="50" />
+                            android:maxLength="2" />
                     </android.support.design.widget.TextInputLayout>
 
                     <android.support.design.widget.TextInputLayout
@@ -151,7 +151,7 @@
                             android:id="@+id/input_layar_ashar"
                             style="@style/text_input_numb"
                             android:hint="@string/ashar"
-                            android:maxLength="50" />
+                            android:maxLength="2" />
                     </android.support.design.widget.TextInputLayout>
 
                     <android.support.design.widget.TextInputLayout
@@ -163,7 +163,7 @@
                             android:id="@+id/input_layar_maghrib"
                             style="@style/text_input_numb"
                             android:hint="@string/maghrib"
-                            android:maxLength="50" />
+                            android:maxLength="2" />
                     </android.support.design.widget.TextInputLayout>
 
                     <Button
