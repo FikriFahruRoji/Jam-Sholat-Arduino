@@ -12,15 +12,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Set;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
-
 import id.ncr.jamsholatapp.fragments.BreakFragment;
 import id.ncr.jamsholatapp.fragments.CorrectionFragment;
 import id.ncr.jamsholatapp.fragments.GeneralFragment;
