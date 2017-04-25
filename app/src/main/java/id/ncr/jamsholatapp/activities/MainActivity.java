@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Start Bluetooth connection
-                text_bluetooth_stat.setText("Connecting to " + DEVICE_NAME);
+                text_bluetooth_stat.setText("Try connecting to " + DEVICE_NAME);
                 mBluetooth.Connect(DEVICE_NAME);
             }
         });
