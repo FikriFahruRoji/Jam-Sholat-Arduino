@@ -106,7 +106,6 @@ public class GeneralFragment extends Fragment implements View.OnClickListener {
         } else {
             inputLayout.setErrorEnabled(false);
         }
-
         return true;
     }
 
