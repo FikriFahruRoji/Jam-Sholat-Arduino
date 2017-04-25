@@ -59,9 +59,9 @@ public class BreakFragment extends Fragment implements View.OnClickListener {
         return viewRoot;
     }
 
-    private boolean validateName(TextInputLayout inputLayout, EditText editText, String err_message) {
+    private boolean validateName(TextInputLayout inputLayout, EditText editText) {
         if (editText.getText().toString().trim().isEmpty()) {
-            inputLayout.setError(err_message);
+            inputLayout.setError(getString(R.string.msg_error_input));
             editText.requestFocus();
             return false;
         } else {
@@ -74,11 +74,11 @@ public class BreakFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view){
         switch (view.getId()) {
             case R.id.btn_send_iqoma:
-                if (validateName(layout_tx_iqoma_isya, tx_iqoma_isya, "Tidak boleh kosong") &&
-                        validateName(layout_tx_iqoma_shubuh, tx_iqoma_shubuh, "Tidak boleh kosong") &&
-                        validateName(layout_tx_iqoma_zhuhur, tx_iqoma_zhuhur, "Tidak boleh kosong") &&
-                        validateName(layout_tx_iqoma_ashar, tx_iqoma_ashar, "Tidak boleh kosong") &&
-                        validateName(layout_tx_iqoma_maghrib, tx_iqoma_maghrib, "Tidak boleh kosong")) {
+                if (validateName(layout_tx_iqoma_isya, tx_iqoma_isya) &&
+                        validateName(layout_tx_iqoma_shubuh, tx_iqoma_shubuh) &&
+                        validateName(layout_tx_iqoma_zhuhur, tx_iqoma_zhuhur) &&
+                        validateName(layout_tx_iqoma_ashar, tx_iqoma_ashar) &&
+                        validateName(layout_tx_iqoma_maghrib, tx_iqoma_maghrib)) {
 
                     iqoma_isya = String.valueOf(tx_iqoma_isya.getText());
                     iqoma_shubuh = String.valueOf(tx_iqoma_shubuh.getText());
@@ -90,11 +90,11 @@ public class BreakFragment extends Fragment implements View.OnClickListener {
                 }
                 break;
             case R.id.btn_send_layar:
-                if (validateName(layout_tx_layar_isya, tx_layar_isya, "Tidak boleh kosong") &&
-                        validateName(layout_tx_layar_shubuh, tx_layar_shubuh, "Tidak boleh kosong") &&
-                        validateName(layout_tx_layar_zhuhur, tx_layar_zhuhur, "Tidak boleh kosong") &&
-                        validateName(layout_tx_layar_ashar, tx_layar_ashar, "Tidak boleh kosong") &&
-                        validateName(layout_tx_layar_maghrib, tx_layar_maghrib, "Tidak boleh kosong")) {
+                if (validateName(layout_tx_layar_isya, tx_layar_isya) &&
+                        validateName(layout_tx_layar_shubuh, tx_layar_shubuh) &&
+                        validateName(layout_tx_layar_zhuhur, tx_layar_zhuhur) &&
+                        validateName(layout_tx_layar_ashar, tx_layar_ashar) &&
+                        validateName(layout_tx_layar_maghrib, tx_layar_maghrib)) {
 
                     layar_isya = String.valueOf(tx_layar_isya.getText());
                     layar_shubuh = String.valueOf(tx_layar_shubuh.getText());

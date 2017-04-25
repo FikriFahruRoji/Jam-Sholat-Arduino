@@ -100,9 +100,9 @@ public class GeneralFragment extends Fragment implements View.OnClickListener {
         return viewRoot;
     }
 
-    private boolean validateName(TextInputLayout inputLayout, EditText editText, String err_message) {
+    private boolean validateName(TextInputLayout inputLayout, EditText editText) {
         if (editText.getText().toString().trim().isEmpty()) {
-            inputLayout.setError(err_message);
+            inputLayout.setError(getString(R.string.msg_error_input));
             editText.requestFocus();
             return false;
         } else {
@@ -115,16 +115,16 @@ public class GeneralFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view){
         switch (view.getId()) {
             case R.id.btn_send_geo:
-                if (validateName(layout_tx_geo, tx_geo, "Lokasi tidak boleh kosong"))
+                if (validateName(layout_tx_geo, tx_geo))
                     Toast.makeText(getContext(), longitude +';'+latitude, Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btn_send_masjid_name:
-                if (validateName(layout_tx_name, tx_name, "Nama tidak boleh kosong"))
+                if (validateName(layout_tx_name, tx_name))
                     nama_masjid = String.valueOf(tx_name.getText());
                     Toast.makeText(getContext(), nama_masjid, Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btn_send_masjid_addres:
-                if (validateName(layout_tx_addres, tx_addres, "Alamat tidak boleh kosong"))
+                if (validateName(layout_tx_addres, tx_addres))
                     alamat_masjid = String.valueOf(tx_addres.getText());
                 Toast.makeText(getContext(), alamat_masjid, Toast.LENGTH_SHORT).show();
                 break;

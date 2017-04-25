@@ -48,9 +48,9 @@ public class InfoFragment extends Fragment implements View.OnClickListener{
         return viewRoot;
     }
 
-    private boolean validateName(TextInputLayout inputLayout, EditText editText, String err_message) {
+    private boolean validateName(TextInputLayout inputLayout, EditText editText) {
         if (editText.getText().toString().trim().isEmpty()) {
-            inputLayout.setError(err_message);
+            inputLayout.setError(getString(R.string.msg_error_input));
             editText.requestFocus();
             return false;
         } else {
@@ -63,25 +63,25 @@ public class InfoFragment extends Fragment implements View.OnClickListener{
     public void onClick(View view){
         switch (view.getId()) {
             case R.id.btn_send_khutbah:
-                if (validateName(layout_tx_khutbah, tx_khutbah, "Tidak boleh kosong")) {
+                if (validateName(layout_tx_khutbah, tx_khutbah)) {
                     khutbah = String.valueOf(tx_khutbah.getText());
                     Toast.makeText(getContext(), khutbah, Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.btn_send_imam:
-                if (validateName(layout_tx_imam, tx_imam, "Tidak boleh kosong")) {
+                if (validateName(layout_tx_imam, tx_imam)) {
                     imam = String.valueOf(tx_imam.getText());
                     Toast.makeText(getContext(), imam, Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.btn_send_muadzin:
-                if (validateName(layout_tx_muadzin, tx_muadzin, "Tidak boleh kosong")) {
+                if (validateName(layout_tx_muadzin, tx_muadzin)) {
                     muadzin = String.valueOf(tx_muadzin.getText());
                     Toast.makeText(getContext(), muadzin, Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.btn_send_pengumuman:
-                if (validateName(layout_tx_pengumuman, tx_pengumuman, "Tidak boleh kosong")) {
+                if (validateName(layout_tx_pengumuman, tx_pengumuman)) {
                     pengumuman = String.valueOf(tx_pengumuman.getText());
                     Toast.makeText(getContext(), pengumuman, Toast.LENGTH_SHORT).show();
                 }
