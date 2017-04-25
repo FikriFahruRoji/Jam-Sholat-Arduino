@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import id.ncr.jamsholatapp.R;
 
+import static id.ncr.jamsholatapp.activities.MainActivity.mBluetooth;
+
 public class BreakFragment extends Fragment implements View.OnClickListener {
 
     private Button btn_send_iqoma, btn_send_layar;
@@ -70,6 +72,14 @@ public class BreakFragment extends Fragment implements View.OnClickListener {
         return true;
     }
 
+    private void sendBluetoothMessage(String message){
+        if (mBluetooth.isConnected()) {
+            mBluetooth.SendMessage(message);
+        } else {
+            Toast.makeText(getContext(), getString(R.string.msg_error_connect), Toast.LENGTH_SHORT).show();
+        }
+    }
+
     @Override
     public void onClick(View view){
         switch (view.getId()) {
@@ -86,9 +96,11 @@ public class BreakFragment extends Fragment implements View.OnClickListener {
                     iqoma_ashar = String.valueOf(tx_iqoma_ashar.getText());
                     iqoma_maghrib = String.valueOf(tx_iqoma_maghrib.getText());
 
-                    Toast.makeText(getContext(), iqoma_isya + "\n" + iqoma_shubuh + "\n" + iqoma_zhuhur + "\n" + iqoma_ashar + "\n" + iqoma_maghrib, Toast.LENGTH_SHORT).show();
+//                  TODO Sending bluetooth command
+                    sendBluetoothMessage(iqoma_isya + "|" + iqoma_shubuh + "|" + iqoma_zhuhur + "|" + iqoma_ashar + "|" + iqoma_maghrib);
                 }
                 break;
+
             case R.id.btn_send_layar:
                 if (validateName(layout_tx_layar_isya, tx_layar_isya) &&
                         validateName(layout_tx_layar_shubuh, tx_layar_shubuh) &&
@@ -102,9 +114,11 @@ public class BreakFragment extends Fragment implements View.OnClickListener {
                     layar_ashar = String.valueOf(tx_layar_ashar.getText());
                     layar_maghrib = String.valueOf(tx_layar_maghrib.getText());
 
-                    Toast.makeText(getContext(), layar_isya + "\n" + layar_shubuh + "\n" + layar_zhuhur + "\n" + layar_ashar + "\n" + layar_maghrib, Toast.LENGTH_SHORT).show();
+//                  TODO Sending bluetooth command
+                    sendBluetoothMessage(layar_isya + "|" + layar_shubuh + "|" + layar_zhuhur + "|" + layar_ashar + "|" + layar_maghrib);
                 }
                 break;
+
             default:
                 break;
         }

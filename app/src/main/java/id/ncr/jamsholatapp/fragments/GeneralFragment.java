@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import id.ncr.jamsholatapp.R;
 
+import static id.ncr.jamsholatapp.activities.MainActivity.mBluetooth;
+
 public class GeneralFragment extends Fragment implements View.OnClickListener {
 
     private ImageButton btn_set_geo;
@@ -109,29 +111,54 @@ public class GeneralFragment extends Fragment implements View.OnClickListener {
         return true;
     }
 
+    private void sendBluetoothMessage(String message){
+        if (mBluetooth.isConnected()) {
+            mBluetooth.SendMessage(message);
+        } else {
+            Toast.makeText(getContext(), getString(R.string.msg_error_connect), Toast.LENGTH_SHORT).show();
+        }
+    }
+
     @Override
     public void onClick(View view){
         switch (view.getId()) {
             case R.id.btn_send_geo:
                 if (validateName(layout_tx_geo, tx_geo))
-                    Toast.makeText(getContext(), longitude +';'+latitude, Toast.LENGTH_SHORT).show();
+
+//                  TODO Sending bluetooth command
+                    sendBluetoothMessage(longitude +';'+latitude);
                 break;
+
             case R.id.btn_send_masjid_name:
-                if (validateName(layout_tx_name, tx_name))
+                if (validateName(layout_tx_name, tx_name)) {
                     nama_masjid = String.valueOf(tx_name.getText());
-                    Toast.makeText(getContext(), nama_masjid, Toast.LENGTH_SHORT).show();
+
+//                  TODO Sending bluetooth command
+                    sendBluetoothMessage(nama_masjid);
+                }
                 break;
+
             case R.id.btn_send_masjid_addres:
-                if (validateName(layout_tx_addres, tx_addres))
+                if (validateName(layout_tx_addres, tx_addres)) {
                     alamat_masjid = String.valueOf(tx_addres.getText());
-                Toast.makeText(getContext(), alamat_masjid, Toast.LENGTH_SHORT).show();
+
+//                  TODO Sending bluetooth command
+                    sendBluetoothMessage(alamat_masjid);
+                }
                 break;
+
             case R.id.btn_send_brights:
-                Toast.makeText(getContext(), brights_value, Toast.LENGTH_SHORT).show();
+
+//              TODO Sending bluetooth command
+                sendBluetoothMessage(brights_value);
                 break;
+
             case R.id.btn_send_buzzer:
-                Toast.makeText(getContext(), buzzer_value, Toast.LENGTH_SHORT).show();
+
+//              TODO Sending bluetooth command
+                sendBluetoothMessage(buzzer_value);
                 break;
+
             default:
                 break;
         }

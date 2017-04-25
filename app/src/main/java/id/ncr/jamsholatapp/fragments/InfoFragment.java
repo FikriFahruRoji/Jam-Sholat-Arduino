@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import id.ncr.jamsholatapp.R;
 
+import static id.ncr.jamsholatapp.activities.MainActivity.mBluetooth;
+
 public class InfoFragment extends Fragment implements View.OnClickListener{
 
     private Button btn_send_khutbah, btn_send_imam, btn_send_muadzin, btn_send_pengumuman;
@@ -59,33 +61,53 @@ public class InfoFragment extends Fragment implements View.OnClickListener{
         return true;
     }
 
+    private void sendBluetoothMessage(String message){
+        if (mBluetooth.isConnected()) {
+            mBluetooth.SendMessage(message);
+        } else {
+            Toast.makeText(getContext(), getString(R.string.msg_error_connect), Toast.LENGTH_SHORT).show();
+        }
+    }
+
     @Override
     public void onClick(View view){
         switch (view.getId()) {
             case R.id.btn_send_khutbah:
                 if (validateName(layout_tx_khutbah, tx_khutbah)) {
                     khutbah = String.valueOf(tx_khutbah.getText());
-                    Toast.makeText(getContext(), khutbah, Toast.LENGTH_SHORT).show();
+
+//                  TODO Sending bluetooth command
+                    sendBluetoothMessage(khutbah);
                 }
                 break;
+
             case R.id.btn_send_imam:
                 if (validateName(layout_tx_imam, tx_imam)) {
                     imam = String.valueOf(tx_imam.getText());
-                    Toast.makeText(getContext(), imam, Toast.LENGTH_SHORT).show();
+
+//                  TODO Sending bluetooth command
+                    sendBluetoothMessage(imam);
                 }
                 break;
+
             case R.id.btn_send_muadzin:
                 if (validateName(layout_tx_muadzin, tx_muadzin)) {
                     muadzin = String.valueOf(tx_muadzin.getText());
-                    Toast.makeText(getContext(), muadzin, Toast.LENGTH_SHORT).show();
+
+//                  TODO Sending bluetooth command
+                    sendBluetoothMessage(muadzin);
                 }
                 break;
+
             case R.id.btn_send_pengumuman:
                 if (validateName(layout_tx_pengumuman, tx_pengumuman)) {
                     pengumuman = String.valueOf(tx_pengumuman.getText());
-                    Toast.makeText(getContext(), pengumuman, Toast.LENGTH_SHORT).show();
+
+//                  TODO Sending bluetooth command
+                    sendBluetoothMessage(pengumuman);
                 }
                 break;
+
             default:
                 break;
         }

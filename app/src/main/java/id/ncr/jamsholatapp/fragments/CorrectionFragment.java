@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import id.ncr.jamsholatapp.R;
 
+import static id.ncr.jamsholatapp.activities.MainActivity.mBluetooth;
+
 public class CorrectionFragment extends Fragment {
 
     private Button btn_send_correction;
@@ -56,12 +58,7 @@ public class CorrectionFragment extends Fragment {
         btn_send_correction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (validateText(layout_tx_correct_isya, tx_correct_isya) &&
-                        validateText(layout_tx_correct_shubuh, tx_correct_shubuh) &&
-                        validateText(layout_tx_correct_syuruq, tx_correct_syuruq) &&
-                        validateText(layout_tx_correct_dzuhur, tx_correct_dzuhur) &&
-                        validateText(layout_tx_correct_ashar, tx_correct_ashar) &&
-                        validateText(layout_tx_correct_maghrib, tx_correct_maghrib)){
+                if (validateText(layout_tx_correct_isya, tx_correct_isya) && validateText(layout_tx_correct_shubuh, tx_correct_shubuh) && validateText(layout_tx_correct_syuruq, tx_correct_syuruq) && validateText(layout_tx_correct_dzuhur, tx_correct_dzuhur) && validateText(layout_tx_correct_ashar, tx_correct_ashar) && validateText(layout_tx_correct_maghrib, tx_correct_maghrib)){
                     correct_isya = spin_isya.getSelectedItem().toString() + tx_correct_isya.getText();
                     correct_shubuh = spin_shubuh.getSelectedItem().toString() + tx_correct_shubuh.getText();
                     correct_syuruq = spin_syuruq.getSelectedItem().toString() + tx_correct_syuruq.getText();
@@ -69,13 +66,21 @@ public class CorrectionFragment extends Fragment {
                     correct_ashar = spin_ashar.getSelectedItem().toString() + tx_correct_ashar.getText();
                     correct_maghrib = spin_maghrib.getSelectedItem().toString() + tx_correct_maghrib.getText();
 
-                    Toast.makeText(getContext(), correct_isya + "\n" + correct_shubuh + "\n" + correct_syuruq + "\n" +
-                            correct_dzuhur + "\n" + correct_ashar + "\n" + correct_maghrib, Toast.LENGTH_SHORT).show();
+//                  TODO Sending bluetooth command
+                    sendBluetoothMessage(correct_isya + "|" + correct_shubuh + "|" + correct_syuruq + "|" + correct_dzuhur + "|" + correct_ashar + "|" + correct_maghrib);
                 }
             }
         });
 
         return viewRoot;
+    }
+
+    private void sendBluetoothMessage(String message){
+        if (mBluetooth.isConnected()) {
+            mBluetooth.SendMessage(message);
+        } else {
+            Toast.makeText(getContext(), getString(R.string.msg_error_connect), Toast.LENGTH_SHORT).show();
+        }
     }
 
     private boolean validateText(TextInputLayout inputLayout, EditText editText) {

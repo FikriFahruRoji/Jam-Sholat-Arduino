@@ -1,6 +1,9 @@
 package id.ncr.jamsholatapp.activities;
 
+import android.bluetooth.BluetoothAdapter;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
@@ -9,25 +12,36 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.Set;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
+
 import id.ncr.jamsholatapp.fragments.BreakFragment;
 import id.ncr.jamsholatapp.fragments.CorrectionFragment;
 import id.ncr.jamsholatapp.fragments.GeneralFragment;
 import id.ncr.jamsholatapp.fragments.InfoFragment;
 import id.ncr.jamsholatapp.R;
+import id.ncr.jamsholatapp.helper.BluetoothHelper;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btn_bluetooth;
-    TextView text_bluetooth_stat;
+    BluetoothAdapter mBluetoothAdapter = null;
+    public static BluetoothHelper mBluetooth = new BluetoothHelper();
+    private String DEVICE_NAME = "HC-06";               // The name of the remote device (BlueSMIRF Gold)
+
+    private Button btn_bluetooth;
+    private TextView text_bluetooth_stat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);              //force portrait screen
         setContentView(R.layout.activity_main);
-
-//      button bluetooth and Text header
-        btn_bluetooth = (Button)findViewById(R.id.button_bluetooth);
-        text_bluetooth_stat = (TextView)findViewById(R.id.text_bluetooth_status);
 
         GeneralFragment generalFragment = new GeneralFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, generalFragment).commit();
@@ -35,10 +49,38 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
+        btn_bluetooth = (Button)findViewById(R.id.button_bluetooth);                    //button bluetooth and Text header
+        text_bluetooth_stat = (TextView)findViewById(R.id.text_bluetooth_status);
+
+        // Check if Bluetooth is supported by the device
+        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        if (mBluetoothAdapter == null) {
+            // Device does not support Bluetooth
+            finish();
+        }
+
         btn_bluetooth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Start Bluetooth connection
+                text_bluetooth_stat.setText("Connecting to " + DEVICE_NAME);
+                mBluetooth.Connect(DEVICE_NAME);
+            }
+        });
 
+        mBluetooth.setBluetoothHelperListener(new BluetoothHelper.BluetoothHelperListener() {
+            @Override
+            public void onBluetoothHelperMessageReceived(BluetoothHelper bluetoothhelper, String message) {
+
+            }
+            @Override
+            public void onBluetoothHelperConnectionStateChanged(BluetoothHelper bluetoothhelper, boolean isConnected) {
+                if (isConnected) {
+                    text_bluetooth_stat.setText("Connected");
+                } else {
+                    text_bluetooth_stat.setText("Disconnected");
+                    mBluetooth.Connect(DEVICE_NAME);
+                }
             }
         });
     }
@@ -67,6 +109,4 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
     };
-
-
 }
