@@ -44,7 +44,7 @@ public class GeneralFragment extends Fragment implements View.OnClickListener {
                 if(gps.canGetLocation()){
                     longitude = gps.getLongitude();
                     latitude = gps.getLatitude();
-                    tx_geo.setText(String.valueOf(longitude).substring(0,6) + ";" + String.valueOf(latitude).substring(0,8));
+                    tx_geo.setText(String.valueOf(longitude).substring(0,8) + ";" + String.valueOf(latitude).substring(0,7));
                 } else {
                     gps.showSettingsAlert();
                 }
@@ -137,7 +137,7 @@ public class GeneralFragment extends Fragment implements View.OnClickListener {
                 if (validateName(layout_tx_geo, tx_geo))
 
 //                  TODO Sending bluetooth command
-                    sendBluetoothMessage(String.valueOf(longitude).substring(0,6) + ";" + String.valueOf(latitude).substring(0,8));
+                    sendBluetoothMessage(String.valueOf(longitude).substring(0,8) + ";" + String.valueOf(latitude).substring(0,7));
                 break;
 
             case R.id.btn_send_masjid_name:
