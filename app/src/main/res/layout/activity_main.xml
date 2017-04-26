@@ -8,58 +8,59 @@
     android:orientation="vertical"
     tools:context="id.ncr.jamsholatapp.activities.MainActivity">
 
-    <LinearLayout
-        android:background="@color/colorPrimary"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:orientation="horizontal">
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin">
 
         <LinearLayout
-            android:layout_gravity="center_vertical"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="0.8">
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+
             <TextView
-                android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Jam Sholat App"
+                android:textColor="@color/white"
                 android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/text_bluetooth_status"
-                android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Device Status"
+                android:textColor="@color/white"
                 android:textSize="15sp" />
         </LinearLayout>
 
         <Button
             android:id="@+id/button_bluetooth"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.25"
-            android:focusable="false"
-            android:background="?android:attr/selectableItemBackground"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             android:layout_gravity="center_vertical"
+            android:background="?android:attr/selectableItemBackground"
+            android:drawableRight="@drawable/ic_bluetooth_white_24dp"
+            android:focusable="false"
             android:focusableInTouchMode="false"
             android:text="Search"
-            android:textColor="@color/white"
-            android:fontFamily="sans-serif-smallcaps"
-            android:drawableRight="@drawable/ic_bluetooth_white_24dp" />
-    </LinearLayout>
+            android:textColor="@color/white" />
+    </RelativeLayout>
 
     <FrameLayout
         android:id="@+id/frame_container"
-        android:layout_margin="@dimen/activity_frame_margin"
         android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:layout_height="0dp">
-    </FrameLayout>
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/activity_frame_margin"
+        android:layout_weight="1"></FrameLayout>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"

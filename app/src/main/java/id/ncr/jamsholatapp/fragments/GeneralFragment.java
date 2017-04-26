@@ -14,8 +14,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import id.ncr.jamsholatapp.GpsHelper;
 import id.ncr.jamsholatapp.R;
 
+import static id.ncr.jamsholatapp.activities.MainActivity.gps;
 import static id.ncr.jamsholatapp.activities.MainActivity.mBluetooth;
 
 public class GeneralFragment extends Fragment implements View.OnClickListener {
@@ -26,7 +28,8 @@ public class GeneralFragment extends Fragment implements View.OnClickListener {
     private TextInputLayout layout_tx_geo, layout_tx_name, layout_tx_addres;
     private RadioGroup rg_buzzer, rg_brights;
 
-    private String longitude = "7.2512", latitude = "107.9236", nama_masjid = "", alamat_masjid = "", brights_value = "150", buzzer_value = "0";
+    private String nama_masjid = "", alamat_masjid = "", brights_value = "150", buzzer_value = "0";
+    private double longitude = 7.2512, latitude = 107.9236;
 
     @Nullable
     @Override
@@ -37,6 +40,14 @@ public class GeneralFragment extends Fragment implements View.OnClickListener {
         btn_set_geo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                gps = new GpsHelper(getContext());
+                if(gps.canGetLocation()){
+                    longitude = gps.getLongitude();
+                    latitude = gps.getLatitude();
+                    tx_geo.setText(String.valueOf(longitude).substring(0,6) + ";" + String.valueOf(latitude).substring(0,8));
+                } else {
+                    gps.showSettingsAlert();
+                }
 
             }
         });
@@ -126,7 +137,7 @@ public class GeneralFragment extends Fragment implements View.OnClickListener {
                 if (validateName(layout_tx_geo, tx_geo))
 
 //                  TODO Sending bluetooth command
-                    sendBluetoothMessage(longitude +';'+latitude);
+                    sendBluetoothMessage(String.valueOf(longitude).substring(0,6) + ";" + String.valueOf(latitude).substring(0,8));
                 break;
 
             case R.id.btn_send_masjid_name:
@@ -163,4 +174,5 @@ public class GeneralFragment extends Fragment implements View.OnClickListener {
                 break;
         }
     }
+
 }
