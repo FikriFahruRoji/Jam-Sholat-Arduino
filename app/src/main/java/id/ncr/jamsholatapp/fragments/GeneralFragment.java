@@ -29,7 +29,7 @@ public class GeneralFragment extends Fragment implements View.OnClickListener {
     private RadioGroup rg_buzzer, rg_brights;
 
     private String nama_masjid = "", alamat_masjid = "", brights_value = "150", buzzer_value = "0";
-    private double longitude = 7.2512, latitude = 107.9236;
+    private double longitude = 0.0, latitude = 0.0;
 
     @Nullable
     @Override
@@ -44,11 +44,18 @@ public class GeneralFragment extends Fragment implements View.OnClickListener {
                 if(gps.canGetLocation()){
                     longitude = gps.getLongitude();
                     latitude = gps.getLatitude();
-                    tx_geo.setText(String.valueOf(longitude).substring(0,8) + ";" + String.valueOf(latitude).substring(0,7));
+
+                    if (longitude != 0.0) {
+                        Toast.makeText(getContext(), "Location found", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Your location :\n" + String.valueOf(longitude) + "\n" + String.valueOf(latitude), Toast.LENGTH_SHORT).show();
+                        tx_geo.setText(String.valueOf(longitude).substring(0,8) + ";" + String.valueOf(latitude).substring(0,7));
+                    } else {
+                        Toast.makeText(getContext(), "Failed to get location, Please try again", Toast.LENGTH_SHORT).show();
+                    }
+//                    tx_geo.setText(String.valueOf(longitude).substring(0,8) + ";" + String.valueOf(latitude).substring(0,7));
                 } else {
                     gps.showSettingsAlert();
                 }
-
             }
         });
 

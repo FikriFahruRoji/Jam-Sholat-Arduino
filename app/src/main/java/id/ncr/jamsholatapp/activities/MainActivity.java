@@ -210,7 +210,6 @@ public class MainActivity extends AppCompatActivity {
                         if (mBluetooth.isConnected()){
                             mBluetooth.Disconnect();
                         }
-                        gps.stopUsingGPS();
                         finish();
                     }
                 })
@@ -231,6 +230,5 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        finish();
     }
 }
