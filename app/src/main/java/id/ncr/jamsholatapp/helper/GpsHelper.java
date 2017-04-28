@@ -1,4 +1,4 @@
-package id.ncr.jamsholatapp;
+package id.ncr.jamsholatapp.helper;
 
 import android.app.AlertDialog;
 import android.app.Service;

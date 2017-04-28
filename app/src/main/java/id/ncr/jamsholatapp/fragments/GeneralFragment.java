@@ -14,7 +14,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import id.ncr.jamsholatapp.GpsHelper;
+import id.ncr.jamsholatapp.helper.GpsHelper;
 import id.ncr.jamsholatapp.R;
 
 import static id.ncr.jamsholatapp.activities.MainActivity.gps;

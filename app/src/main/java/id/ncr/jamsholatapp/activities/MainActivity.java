@@ -1,6 +1,7 @@
 package id.ncr.jamsholatapp.activities;
 
 import android.app.AlertDialog;
+import android.app.Application;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.DialogInterface;
@@ -10,7 +11,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import id.ncr.jamsholatapp.GpsHelper;
+import id.ncr.jamsholatapp.helper.GpsHelper;
 import id.ncr.jamsholatapp.fragments.BreakFragment;
 import id.ncr.jamsholatapp.fragments.CorrectionFragment;
 import id.ncr.jamsholatapp.fragments.GeneralFragment;
@@ -207,9 +207,11 @@ public class MainActivity extends AppCompatActivity {
                 .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
                     @SuppressWarnings("deprecation")
                     public void onClick(DialogInterface dialog,int id) {
-                        mBluetooth.Disconnect();
+                        if (mBluetooth.isConnected()){
+                            mBluetooth.Disconnect();
+                        }
                         gps.stopUsingGPS();
-                        onDestroy();
+                        finish();
                     }
                 })
                 .setNegativeButton("Batal", null)
@@ -228,9 +230,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onDestroy() {
-        mBluetooth.Disconnect();
-        gps.stopUsingGPS();
-        finish();
         super.onDestroy();
+        finish();
     }
 }
