@@ -36,7 +36,6 @@
                             <EditText
                                 android:id="@+id/input_geo"
                                 style="@style/text_input"
-                                android:editable="false"
                                 android:hint="@string/lokasi"
                                 android:text="" />
                         </android.support.design.widget.TextInputLayout>
