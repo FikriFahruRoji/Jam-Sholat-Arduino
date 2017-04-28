@@ -65,7 +65,7 @@ public class CorrectionFragment extends Fragment {
                     correct_maghrib = spin_maghrib.getSelectedItem().toString() + tx_correct_maghrib.getText();
 
 //                  TODO Sending bluetooth command
-                    sendBluetoothMessage(correct_isya + "|" + correct_shubuh + "|" + correct_syuruq + "|" + correct_dzuhur + "|" + correct_ashar + "|" + correct_maghrib);
+                    sendBluetoothMessage("*9|" + correct_shubuh + "|" + correct_syuruq + "|" + correct_dzuhur + "|" + correct_ashar + "|" + correct_maghrib + "|" + correct_isya + "#");
                 }
             }
         });

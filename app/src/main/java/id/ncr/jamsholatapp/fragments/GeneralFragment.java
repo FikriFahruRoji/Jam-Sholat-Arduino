@@ -48,7 +48,7 @@ public class GeneralFragment extends Fragment implements View.OnClickListener {
                     if (longitude != 0.0) {
                         Toast.makeText(getContext(), "Location found", Toast.LENGTH_SHORT).show();
                         Toast.makeText(getContext(), "Your location :\n" + String.valueOf(longitude) + "\n" + String.valueOf(latitude), Toast.LENGTH_SHORT).show();
-                        tx_geo.setText(String.valueOf(longitude).substring(0,8) + ";" + String.valueOf(latitude).substring(0,7));
+                        tx_geo.setText(String.valueOf(longitude).substring(0,8) + "," + String.valueOf(latitude).substring(0,7));
                     } else {
                         Toast.makeText(getContext(), "Failed to get location, Please try again", Toast.LENGTH_SHORT).show();
                     }
@@ -139,17 +139,19 @@ public class GeneralFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view){
+        String messageCommand = "";
         switch (view.getId()) {
             case R.id.btn_send_geo:
                 if (validateName(layout_tx_geo, tx_geo))
 
 //                  TODO Sending bluetooth command
-                    sendBluetoothMessage(String.valueOf(longitude).substring(0,8) + ";" + String.valueOf(latitude).substring(0,7));
+                    messageCommand = "*6|" + String.valueOf(longitude).substring(0,8) + "|" + String.valueOf(latitude).substring(0,7) + "# ";
+                    sendBluetoothMessage(messageCommand);
                 break;
 
             case R.id.btn_send_masjid_name:
                 if (validateName(layout_tx_name, tx_name)) {
-                    nama_masjid = String.valueOf(tx_name.getText());
+                    nama_masjid = "*1" + String.valueOf(tx_name.getText() + "#");
 
 //                  TODO Sending bluetooth command
                     sendBluetoothMessage(nama_masjid);
@@ -158,7 +160,7 @@ public class GeneralFragment extends Fragment implements View.OnClickListener {
 
             case R.id.btn_send_masjid_addres:
                 if (validateName(layout_tx_addres, tx_addres)) {
-                    alamat_masjid = String.valueOf(tx_addres.getText());
+                    alamat_masjid = "*2" + String.valueOf(tx_addres.getText()) + "#";
 
 //                  TODO Sending bluetooth command
                     sendBluetoothMessage(alamat_masjid);
@@ -168,7 +170,7 @@ public class GeneralFragment extends Fragment implements View.OnClickListener {
             case R.id.btn_send_brights:
 
 //              TODO Sending bluetooth command
-                sendBluetoothMessage(brights_value);
+                sendBluetoothMessage("*5|" + brights_value + "#");
                 break;
 
             case R.id.btn_send_buzzer:

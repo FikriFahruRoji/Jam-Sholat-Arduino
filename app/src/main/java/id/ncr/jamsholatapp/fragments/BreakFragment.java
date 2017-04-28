@@ -19,10 +19,10 @@ import static id.ncr.jamsholatapp.activities.MainActivity.mBluetooth;
 public class BreakFragment extends Fragment implements View.OnClickListener {
 
     private Button btn_send_iqoma, btn_send_layar;
-    private EditText tx_iqoma_isya, tx_iqoma_shubuh, tx_iqoma_zhuhur, tx_iqoma_ashar, tx_iqoma_maghrib, tx_layar_isya, tx_layar_shubuh, tx_layar_zhuhur, tx_layar_ashar, tx_layar_maghrib;
-    private TextInputLayout layout_tx_iqoma_isya, layout_tx_iqoma_shubuh, layout_tx_iqoma_zhuhur, layout_tx_iqoma_ashar, layout_tx_iqoma_maghrib, layout_tx_layar_isya, layout_tx_layar_shubuh, layout_tx_layar_zhuhur, layout_tx_layar_ashar, layout_tx_layar_maghrib;
+    private EditText tx_iqoma_shubuh, tx_iqoma_zhuhur, tx_iqoma_ashar, tx_iqoma_maghrib, tx_iqoma_isya, tx_layar_shubuh, tx_layar_zhuhur, tx_layar_ashar, tx_layar_maghrib, tx_layar_isya, tx_layar_jumat;
+    private TextInputLayout layout_tx_iqoma_shubuh, layout_tx_iqoma_zhuhur, layout_tx_iqoma_ashar, layout_tx_iqoma_maghrib, layout_tx_iqoma_isya, layout_tx_layar_shubuh, layout_tx_layar_zhuhur, layout_tx_layar_ashar, layout_tx_layar_maghrib, layout_tx_layar_isya, layout_tx_layar_jumat;
 
-    private String iqoma_isya = "", iqoma_shubuh = "", iqoma_zhuhur = "", iqoma_ashar = "", iqoma_maghrib = "", layar_isya = "", layar_shubuh = "", layar_zhuhur = "", layar_ashar = "", layar_maghrib = "";
+    private String iqoma_isya = "", iqoma_shubuh = "", iqoma_zhuhur = "", iqoma_ashar = "", iqoma_maghrib = "", layar_isya = "", layar_shubuh = "", layar_zhuhur = "", layar_ashar = "", layar_maghrib = "", layar_jumat = "";
 
     @Nullable
     @Override
@@ -55,6 +55,8 @@ public class BreakFragment extends Fragment implements View.OnClickListener {
         tx_layar_ashar = (EditText) viewRoot.findViewById(R.id.input_layar_ashar);
         layout_tx_layar_maghrib = (TextInputLayout) viewRoot.findViewById(R.id.layout_input_layar_maghrib);
         tx_layar_maghrib = (EditText) viewRoot.findViewById(R.id.input_layar_maghrib);
+        layout_tx_layar_jumat = (TextInputLayout) viewRoot.findViewById(R.id.layout_input_layar_jumat);
+        tx_layar_jumat = (EditText) viewRoot.findViewById(R.id.input_layar_jumat);
 
         return viewRoot;
     }
@@ -80,6 +82,7 @@ public class BreakFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view){
+        String messageCommand = "";
         switch (view.getId()) {
             case R.id.btn_send_iqoma:
                 if (validateName(layout_tx_iqoma_isya, tx_iqoma_isya) &&
@@ -94,8 +97,9 @@ public class BreakFragment extends Fragment implements View.OnClickListener {
                     iqoma_ashar = String.valueOf(tx_iqoma_ashar.getText());
                     iqoma_maghrib = String.valueOf(tx_iqoma_maghrib.getText());
 
+                    messageCommand = "*10|" + iqoma_shubuh + "|" + iqoma_zhuhur + "|" + iqoma_ashar + "|" + iqoma_maghrib + "|" + iqoma_isya + "#";
 //                  TODO Sending bluetooth command
-                    sendBluetoothMessage(iqoma_isya + "|" + iqoma_shubuh + "|" + iqoma_zhuhur + "|" + iqoma_ashar + "|" + iqoma_maghrib);
+                    sendBluetoothMessage(messageCommand);
                 }
                 break;
 
@@ -104,16 +108,19 @@ public class BreakFragment extends Fragment implements View.OnClickListener {
                         validateName(layout_tx_layar_shubuh, tx_layar_shubuh) &&
                         validateName(layout_tx_layar_zhuhur, tx_layar_zhuhur) &&
                         validateName(layout_tx_layar_ashar, tx_layar_ashar) &&
-                        validateName(layout_tx_layar_maghrib, tx_layar_maghrib)) {
+                        validateName(layout_tx_layar_maghrib, tx_layar_maghrib) &&
+                        validateName(layout_tx_layar_jumat, tx_layar_jumat)) {
 
-                    layar_isya = String.valueOf(tx_layar_isya.getText());
                     layar_shubuh = String.valueOf(tx_layar_shubuh.getText());
                     layar_zhuhur = String.valueOf(tx_layar_zhuhur.getText());
                     layar_ashar = String.valueOf(tx_layar_ashar.getText());
                     layar_maghrib = String.valueOf(tx_layar_maghrib.getText());
+                    layar_isya = String.valueOf(tx_layar_isya.getText());
+                    layar_jumat = String.valueOf(tx_layar_jumat.getText());
 
+                    messageCommand = "*11|" + layar_shubuh + "|" + layar_zhuhur + "|" + layar_zhuhur + "|" + layar_maghrib + "|" + layar_isya + "|" + layar_jumat + "#";
 //                  TODO Sending bluetooth command
-                    sendBluetoothMessage(layar_isya + "|" + layar_shubuh + "|" + layar_zhuhur + "|" + layar_ashar + "|" + layar_maghrib);
+                    sendBluetoothMessage(messageCommand);
                 }
                 break;
 

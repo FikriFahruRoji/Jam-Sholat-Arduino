@@ -18,7 +18,7 @@ import static id.ncr.jamsholatapp.activities.MainActivity.mBluetooth;
 
 public class InfoFragment extends Fragment implements View.OnClickListener{
 
-    private Button btn_send_khutbah, btn_send_imam, btn_send_muadzin, btn_send_pengumuman;
+    private Button btn_send_info, btn_send_pengumuman;
     private EditText tx_khutbah, tx_imam, tx_muadzin, tx_pengumuman;
     private TextInputLayout layout_tx_khutbah, layout_tx_imam, layout_tx_muadzin, layout_tx_pengumuman;
 
@@ -29,12 +29,8 @@ public class InfoFragment extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View viewRoot = inflater.inflate(R.layout.fragment_info, container, false);
 
-        btn_send_khutbah = (Button) viewRoot.findViewById(R.id.btn_send_khutbah);
-        btn_send_khutbah.setOnClickListener(this);
-        btn_send_imam = (Button) viewRoot.findViewById(R.id.btn_send_imam);
-        btn_send_imam.setOnClickListener(this);
-        btn_send_muadzin = (Button) viewRoot.findViewById(R.id.btn_send_muadzin);
-        btn_send_muadzin.setOnClickListener(this);
+        btn_send_info = (Button) viewRoot.findViewById(R.id.btn_send_info);
+        btn_send_info.setOnClickListener(this);
         btn_send_pengumuman = (Button) viewRoot.findViewById(R.id.btn_send_pengumuman);
         btn_send_pengumuman.setOnClickListener(this);
 
@@ -71,31 +67,20 @@ public class InfoFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View view){
+        String messageComand = "";
         switch (view.getId()) {
-            case R.id.btn_send_khutbah:
-                if (validateName(layout_tx_khutbah, tx_khutbah)) {
+            case R.id.btn_send_info:
+                if (validateName(layout_tx_khutbah, tx_khutbah) &&
+                        validateName(layout_tx_imam, tx_imam) &&
+                        validateName(layout_tx_muadzin, tx_muadzin)) {
+
                     khutbah = String.valueOf(tx_khutbah.getText());
-
-//                  TODO Sending bluetooth command
-                    sendBluetoothMessage(khutbah);
-                }
-                break;
-
-            case R.id.btn_send_imam:
-                if (validateName(layout_tx_imam, tx_imam)) {
                     imam = String.valueOf(tx_imam.getText());
-
-//                  TODO Sending bluetooth command
-                    sendBluetoothMessage(imam);
-                }
-                break;
-
-            case R.id.btn_send_muadzin:
-                if (validateName(layout_tx_muadzin, tx_muadzin)) {
                     muadzin = String.valueOf(tx_muadzin.getText());
 
+                    messageComand = "*4" + imam + "|" + khutbah + "|" + muadzin + "#";
 //                  TODO Sending bluetooth command
-                    sendBluetoothMessage(muadzin);
+                    sendBluetoothMessage(messageComand);
                 }
                 break;
 
@@ -103,8 +88,9 @@ public class InfoFragment extends Fragment implements View.OnClickListener{
                 if (validateName(layout_tx_pengumuman, tx_pengumuman)) {
                     pengumuman = String.valueOf(tx_pengumuman.getText());
 
+                    messageComand = "*3" + pengumuman + "#";
 //                  TODO Sending bluetooth command
-                    sendBluetoothMessage(pengumuman);
+                    sendBluetoothMessage(messageComand);
                 }
                 break;
 

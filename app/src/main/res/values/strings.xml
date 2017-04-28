@@ -38,4 +38,5 @@
     <string name="msg_error_input">Tidak boleh kosong</string>
     <string name="msg_error_connect">Bluetooth not connected</string>
     <string name="exit">Keluar dari aplikasi</string>
+    <string name="jumat">Jum\'at</string>
 </resources>
