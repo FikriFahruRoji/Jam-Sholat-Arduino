@@ -50,6 +50,7 @@ public class GeneralFragment extends Fragment implements View.OnClickListener {
                         Toast.makeText(getContext(), "Your location :\n" + String.valueOf(longitude) + "\n" + String.valueOf(latitude), Toast.LENGTH_SHORT).show();
                         tx_geo.setText(String.valueOf(longitude).substring(0,8) + "," + String.valueOf(latitude).substring(0,7));
                     } else {
+                        tx_geo.setText("");
                         Toast.makeText(getContext(), "Failed to get location, Please try again", Toast.LENGTH_SHORT).show();
                     }
 //                    tx_geo.setText(String.valueOf(longitude).substring(0,8) + ";" + String.valueOf(latitude).substring(0,7));
