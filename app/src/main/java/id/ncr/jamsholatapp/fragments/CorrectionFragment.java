@@ -56,7 +56,7 @@ public class CorrectionFragment extends Fragment {
         btn_send_correction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (validateText(layout_tx_correct_isya, tx_correct_isya) && validateText(layout_tx_correct_shubuh, tx_correct_shubuh) && validateText(layout_tx_correct_syuruq, tx_correct_syuruq) && validateText(layout_tx_correct_dzuhur, tx_correct_dzuhur) && validateText(layout_tx_correct_ashar, tx_correct_ashar) && validateText(layout_tx_correct_maghrib, tx_correct_maghrib)){
+                if (validateText(layout_tx_correct_shubuh, tx_correct_shubuh) && validateText(layout_tx_correct_syuruq, tx_correct_syuruq) && validateText(layout_tx_correct_dzuhur, tx_correct_dzuhur) && validateText(layout_tx_correct_ashar, tx_correct_ashar) && validateText(layout_tx_correct_maghrib, tx_correct_maghrib) && validateText(layout_tx_correct_isya, tx_correct_isya)){
                     correct_isya = spin_isya.getSelectedItem().toString() + tx_correct_isya.getText();
                     correct_shubuh = spin_shubuh.getSelectedItem().toString() + tx_correct_shubuh.getText();
                     correct_syuruq = spin_syuruq.getSelectedItem().toString() + tx_correct_syuruq.getText();
