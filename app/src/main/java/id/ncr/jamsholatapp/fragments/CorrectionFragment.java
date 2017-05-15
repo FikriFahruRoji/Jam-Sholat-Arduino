@@ -3,20 +3,14 @@ package id.ncr.jamsholatapp.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.SeekBar;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 import id.ncr.jamsholatapp.R;
 
@@ -32,7 +26,7 @@ public class CorrectionFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View viewRoot = inflater.inflate(R.layout.fragment_correction_, container, false);
+        View viewRoot = inflater.inflate(R.layout.fragment_correction, container, false);
 
         seek_shubuh = (SeekBar) viewRoot.findViewById(R.id.seek_shubuh);
         menit_shubuh = (TextView) viewRoot.findViewById(R.id.correction_shubuh);
@@ -167,7 +161,7 @@ public class CorrectionFragment extends Fragment {
 
         return viewRoot;
     }
-    
+
     private void sendBluetoothMessage(String message){
         if (mBluetooth.isConnected()) {
             mBluetooth.SendMessage(message);
