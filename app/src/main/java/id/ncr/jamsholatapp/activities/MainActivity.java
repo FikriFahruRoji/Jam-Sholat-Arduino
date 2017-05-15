@@ -68,22 +68,22 @@ public class MainActivity extends AppCompatActivity {
 
         // Check if Bluetooth is supported by the device
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-//        if (mBluetoothAdapter == null) {
-//            new AlertDialog.Builder(this)
-//                    .setMessage("Bluetooth is not supported by the device")
-//                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-//                        @SuppressWarnings("deprecation")
-//                        public void onClick(DialogInterface dialog, int id) {
-//                            finish();
-//                        }
-//                    })
-//                    .show();
-//        } else {
-//            if (!mBluetoothAdapter.isEnabled()) {
-//                Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-//                startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
-//            }
-//        }
+        if (mBluetoothAdapter == null) {
+            new AlertDialog.Builder(this)
+                    .setMessage("Bluetooth is not supported by the device")
+                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        @SuppressWarnings("deprecation")
+                        public void onClick(DialogInterface dialog, int id) {
+                            finish();
+                        }
+                    })
+                    .show();
+        } else {
+            if (!mBluetoothAdapter.isEnabled()) {
+                Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+            }
+        }
 
         btn_bluetooth.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
                 devicesList.setAdapter(devicesListAdapter);
                 //Create sequence of items
                 AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
-                dialogBuilder.setTitle("Paired/Unpaired Devices");
+                dialogBuilder.setTitle("List Devices");
                 dialogBuilder.setView(devicesList);
                 //Create alert dialog object via builder
                 final AlertDialog alertDialogObject = dialogBuilder.create();
