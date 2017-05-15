@@ -39,4 +39,6 @@
     <string name="msg_error_connect">Bluetooth not connected</string>
     <string name="exit">Keluar dari aplikasi</string>
     <string name="jumat">Jum\'at</string>
+    <string name="longitude">Longitude</string>
+    <string name="latitude">Latitude</string>
 </resources>

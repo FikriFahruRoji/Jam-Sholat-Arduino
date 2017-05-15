@@ -28,16 +28,32 @@
                         android:orientation="horizontal">
 
                         <android.support.design.widget.TextInputLayout
-                            android:id="@+id/layout_input_geo"
+                            android:id="@+id/layout_input_geo_long"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.85">
+                            android:layout_weight="0.40">
 
                             <EditText
-                                android:id="@+id/input_geo"
-                                style="@style/text_input"
-                                android:editable="false"
-                                android:hint="@string/lokasi"
+                                android:digits="0123456789.-"
+                                android:id="@+id/input_geo_long"
+                                style="@style/text_input_numb"
+                                android:hint="@string/longitude"
+                                android:text="" />
+                        </android.support.design.widget.TextInputLayout>
+
+
+
+                        <android.support.design.widget.TextInputLayout
+                            android:id="@+id/layout_input_geo_lat"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.40">
+
+                            <EditText
+                                android:digits="0123456789.-"
+                                android:id="@+id/input_geo_lat"
+                                style="@style/text_input_numb"
+                                android:hint="@string/latitude"
                                 android:text="" />
                         </android.support.design.widget.TextInputLayout>
 
@@ -45,7 +61,7 @@
                             android:id="@+id/btn_set_geo"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.15"
+                            android:layout_weight="0.16"
                             android:src="@drawable/ic_my_location_24dp" />
                     </LinearLayout>
 

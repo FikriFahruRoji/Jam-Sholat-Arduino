@@ -85,11 +85,11 @@ public class BreakFragment extends Fragment implements View.OnClickListener {
         String messageCommand = "";
         switch (view.getId()) {
             case R.id.btn_send_iqoma:
-                if (validateName(layout_tx_iqoma_isya, tx_iqoma_isya) &&
-                        validateName(layout_tx_iqoma_shubuh, tx_iqoma_shubuh) &&
+                if (validateName(layout_tx_iqoma_shubuh, tx_iqoma_shubuh) &&
                         validateName(layout_tx_iqoma_zhuhur, tx_iqoma_zhuhur) &&
                         validateName(layout_tx_iqoma_ashar, tx_iqoma_ashar) &&
-                        validateName(layout_tx_iqoma_maghrib, tx_iqoma_maghrib)) {
+                        validateName(layout_tx_iqoma_maghrib, tx_iqoma_maghrib) &&
+                        validateName(layout_tx_iqoma_isya, tx_iqoma_isya)) {
 
                     iqoma_isya = String.valueOf(tx_iqoma_isya.getText());
                     iqoma_shubuh = String.valueOf(tx_iqoma_shubuh.getText());
@@ -104,12 +104,12 @@ public class BreakFragment extends Fragment implements View.OnClickListener {
                 break;
 
             case R.id.btn_send_layar:
-                if (validateName(layout_tx_layar_isya, tx_layar_isya) &&
-                        validateName(layout_tx_layar_shubuh, tx_layar_shubuh) &&
+                if (validateName(layout_tx_layar_shubuh, tx_layar_shubuh) &&
                         validateName(layout_tx_layar_zhuhur, tx_layar_zhuhur) &&
                         validateName(layout_tx_layar_ashar, tx_layar_ashar) &&
                         validateName(layout_tx_layar_maghrib, tx_layar_maghrib) &&
-                        validateName(layout_tx_layar_jumat, tx_layar_jumat)) {
+                        validateName(layout_tx_layar_jumat, tx_layar_jumat) &&
+                        validateName(layout_tx_layar_isya, tx_layar_isya)) {
 
                     layar_shubuh = String.valueOf(tx_layar_shubuh.getText());
                     layar_zhuhur = String.valueOf(tx_layar_zhuhur.getText());

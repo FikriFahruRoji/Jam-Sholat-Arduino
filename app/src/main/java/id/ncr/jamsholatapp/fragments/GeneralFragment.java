@@ -24,11 +24,11 @@ public class GeneralFragment extends Fragment implements View.OnClickListener {
 
     private ImageButton btn_set_geo;
     private Button btn_send_geo, btn_send_name, btn_send_addres, btn_send_brights, btn_send_buzzer;
-    private EditText tx_geo, tx_name, tx_addres;
-    private TextInputLayout layout_tx_geo, layout_tx_name, layout_tx_addres;
+    private EditText tx_geo_long, tx_geo_lat, tx_name, tx_addres;
+    private TextInputLayout layout_tx_geo_long, layout_tx_geo_lat, layout_tx_name, layout_tx_addres;
     private RadioGroup rg_buzzer, rg_brights;
 
-    private String nama_masjid = "", alamat_masjid = "", brights_value = "150", buzzer_value = "0";
+    private String geo, nama_masjid = "", alamat_masjid = "", brights_value = "150", buzzer_value = "0";
     private double longitude = 0.0, latitude = 0.0;
 
     @Nullable
@@ -48,9 +48,11 @@ public class GeneralFragment extends Fragment implements View.OnClickListener {
                     if (longitude != 0.0) {
                         Toast.makeText(getContext(), "Location found", Toast.LENGTH_SHORT).show();
                         Toast.makeText(getContext(), "Your location :\n" + String.valueOf(longitude) + "\n" + String.valueOf(latitude), Toast.LENGTH_SHORT).show();
-                        tx_geo.setText(String.valueOf(longitude).substring(0,8) + "," + String.valueOf(latitude).substring(0,7));
+                        tx_geo_long.setText(String.valueOf(longitude).substring(0,8));
+                        tx_geo_lat.setText(String.valueOf(latitude).substring(0,7));
                     } else {
-                        tx_geo.setText("");
+                        tx_geo_long.setText("");
+                        tx_geo_lat.setText("");
                         Toast.makeText(getContext(), "Failed to get location, Please try again", Toast.LENGTH_SHORT).show();
                     }
 //                    tx_geo.setText(String.valueOf(longitude).substring(0,8) + ";" + String.valueOf(latitude).substring(0,7));
@@ -71,8 +73,10 @@ public class GeneralFragment extends Fragment implements View.OnClickListener {
         btn_send_buzzer = (Button) viewRoot.findViewById(R.id.btn_send_buzzer);
         btn_send_buzzer.setOnClickListener(this);
 
-        layout_tx_geo = (TextInputLayout) viewRoot.findViewById(R.id.layout_input_geo);
-        tx_geo = (EditText) viewRoot.findViewById(R.id.input_geo);
+        layout_tx_geo_long = (TextInputLayout) viewRoot.findViewById(R.id.layout_input_geo_long);
+        tx_geo_long = (EditText) viewRoot.findViewById(R.id.input_geo_long);
+        layout_tx_geo_lat = (TextInputLayout) viewRoot.findViewById(R.id.layout_input_geo_lat);
+        tx_geo_lat = (EditText) viewRoot.findViewById(R.id.input_geo_lat);
         layout_tx_name = (TextInputLayout) viewRoot.findViewById(R.id.layout_input_nama_masjid);
         tx_name = (EditText) viewRoot.findViewById(R.id.input_nama_masjid);
         layout_tx_addres = (TextInputLayout) viewRoot.findViewById(R.id.layout_input_alamat_masjid);
@@ -140,14 +144,15 @@ public class GeneralFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view){
-        String messageCommand = "";
         switch (view.getId()) {
             case R.id.btn_send_geo:
-                if (validateName(layout_tx_geo, tx_geo))
+                if (validateName(layout_tx_geo_long, tx_geo_long)== false || validateName(layout_tx_geo_lat, tx_geo_lat)==false) {
 
-//                  TODO Sending bluetooth command
-                    messageCommand = "*6|" + String.valueOf(longitude).substring(0,8) + "|" + String.valueOf(latitude).substring(0,7) + "# ";
-                    sendBluetoothMessage(messageCommand);
+                } else {
+//                    TODO Sending bluetooth command
+                    geo = "*6|" + String.valueOf(tx_geo_long.getText()) + "|" + String.valueOf(tx_geo_lat.getText()) + "# ";
+                    sendBluetoothMessage(geo);
+                }
                 break;
 
             case R.id.btn_send_masjid_name:
