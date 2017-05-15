@@ -10,8 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.SeekBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import id.ncr.jamsholatapp.R;
 
@@ -20,75 +25,154 @@ import static id.ncr.jamsholatapp.activities.MainActivity.mBluetooth;
 public class CorrectionFragment extends Fragment {
 
     private Button btn_send_correction;
-    private EditText tx_correct_isya, tx_correct_shubuh, tx_correct_syuruq, tx_correct_dzuhur, tx_correct_ashar, tx_correct_maghrib;
-    private TextInputLayout layout_tx_correct_isya, layout_tx_correct_shubuh, layout_tx_correct_syuruq, layout_tx_correct_dzuhur, layout_tx_correct_ashar, layout_tx_correct_maghrib;
-    private Spinner spin_isya, spin_shubuh, spin_syuruq, spin_dzuhur, spin_ashar, spin_maghrib;
-
-    private String correct_isya, correct_shubuh, correct_syuruq, correct_dzuhur, correct_ashar, correct_maghrib;
+    private TextView menit_shubuh, menit_syuruq, menit_zhuhur, menit_ashar, menit_maghrib, menit_isya;
+    private SeekBar seek_shubuh, seek_syuruq, seek_zhuhur, seek_ashar, seek_maghrib, seek_isya;
+    private String correct_shubuh, correct_syuruq, correct_zhuhur, correct_ashar, correct_maghrib, correct_isya;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View viewRoot = inflater.inflate(R.layout.fragment_correction, container, false);
+        View viewRoot = inflater.inflate(R.layout.fragment_correction_, container, false);
 
-        layout_tx_correct_isya = (TextInputLayout) viewRoot.findViewById(R.id.layout_input_correct_isya);
-        tx_correct_isya = (EditText) viewRoot.findViewById(R.id.input_correct_isya);
-        layout_tx_correct_shubuh = (TextInputLayout) viewRoot.findViewById(R.id.layout_input_correct_shubuh);
-        tx_correct_shubuh = (EditText) viewRoot.findViewById(R.id.input_correct_shubuh);
-        layout_tx_correct_syuruq = (TextInputLayout) viewRoot.findViewById(R.id.layout_input_correct_syuruq);
-        tx_correct_syuruq = (EditText) viewRoot.findViewById(R.id.input_correct_syuruq);
-        layout_tx_correct_dzuhur = (TextInputLayout) viewRoot.findViewById(R.id.layout_input_correct_dzuhur);
-        tx_correct_dzuhur = (EditText) viewRoot.findViewById(R.id.input_correct_dzuhur);
-        layout_tx_correct_ashar = (TextInputLayout) viewRoot.findViewById(R.id.layout_input_correct_ashar);
-        tx_correct_ashar = (EditText) viewRoot.findViewById(R.id.input_correct_ashar);
-        layout_tx_correct_maghrib = (TextInputLayout) viewRoot.findViewById(R.id.layout_input_correct_maghrib);
-        tx_correct_maghrib = (EditText) viewRoot.findViewById(R.id.input_correct_maghrib);
+        seek_shubuh = (SeekBar) viewRoot.findViewById(R.id.seek_shubuh);
+        menit_shubuh = (TextView) viewRoot.findViewById(R.id.correction_shubuh);
+        seek_shubuh.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                menit_shubuh.setText(String.valueOf(progress-10) + " Menit");
+                if ((progress - 10) < 0){
+                    correct_shubuh = String.valueOf(progress-10);
+                } else {
+                    correct_shubuh = "+" + String.valueOf(progress-10);
+                }
+            }
 
-        spin_isya = (Spinner) viewRoot.findViewById(R.id.spin_isya);
-        spin_shubuh = (Spinner) viewRoot.findViewById(R.id.spin_shubuh);
-        spin_syuruq = (Spinner) viewRoot.findViewById(R.id.spin_syuruq);
-        spin_dzuhur = (Spinner) viewRoot.findViewById(R.id.spin_dzuhur);
-        spin_ashar = (Spinner) viewRoot.findViewById(R.id.spin_ashar);
-        spin_maghrib = (Spinner) viewRoot.findViewById(R.id.spin_maghrib);
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {}
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {}
+        });
+
+        seek_syuruq = (SeekBar) viewRoot.findViewById(R.id.seek_syuruq);
+        menit_syuruq = (TextView) viewRoot.findViewById(R.id.correction_syuruq);
+        seek_syuruq.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                menit_syuruq.setText(String.valueOf(progress-10) + " Menit");
+                if ((progress - 10) < 0){
+                    correct_syuruq = String.valueOf(progress-10);
+                } else {
+                    correct_syuruq = "+" + String.valueOf(progress-10);
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {}
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {}
+        });
+
+        seek_zhuhur = (SeekBar) viewRoot.findViewById(R.id.seek_zhuhur);
+        menit_zhuhur = (TextView) viewRoot.findViewById(R.id.correction_zhuhur);
+        seek_zhuhur.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                menit_zhuhur.setText(String.valueOf(progress-10) + " Menit");
+                if ((progress - 10) < 0){
+                    correct_zhuhur = String.valueOf(progress-10);
+                } else {
+                    correct_zhuhur = "+" + String.valueOf(progress-10);
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {}
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {}
+        });
+
+        seek_ashar = (SeekBar) viewRoot.findViewById(R.id.seek_ashar);
+        menit_ashar = (TextView) viewRoot.findViewById(R.id.correction_ashar);
+        seek_ashar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                menit_ashar.setText(String.valueOf(progress-10) + " Menit");
+                if ((progress - 10) < 0){
+                    correct_ashar = String.valueOf(progress-10);
+                } else {
+                    correct_ashar = "+" + String.valueOf(progress-10);
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {}
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {}
+        });
+
+        seek_maghrib = (SeekBar) viewRoot.findViewById(R.id.seek_maghrib);
+        menit_maghrib = (TextView) viewRoot.findViewById(R.id.correction_maghrib);
+        seek_maghrib.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                menit_maghrib.setText(String.valueOf(progress-10) + " Menit");
+                if ((progress - 10) < 0){
+                    correct_maghrib = String.valueOf(progress-10);
+                } else {
+                    correct_maghrib = "+" + String.valueOf(progress-10);
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {}
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {}
+        });
+
+        seek_isya = (SeekBar) viewRoot.findViewById(R.id.seek_isya);
+        menit_isya = (TextView) viewRoot.findViewById(R.id.correction_isya);
+        seek_isya.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                menit_isya.setText(String.valueOf(progress-10) + " Menit");
+                if ((progress - 10) < 0){
+                    correct_isya = String.valueOf(progress-10);
+                } else {
+                    correct_isya = "+" + String.valueOf(progress-10);
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {}
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {}
+        });
 
 
         btn_send_correction = (Button) viewRoot.findViewById(R.id.btn_send_correction);
         btn_send_correction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (validateText(layout_tx_correct_shubuh, tx_correct_shubuh) && validateText(layout_tx_correct_syuruq, tx_correct_syuruq) && validateText(layout_tx_correct_dzuhur, tx_correct_dzuhur) && validateText(layout_tx_correct_ashar, tx_correct_ashar) && validateText(layout_tx_correct_maghrib, tx_correct_maghrib) && validateText(layout_tx_correct_isya, tx_correct_isya)){
-                    correct_isya = spin_isya.getSelectedItem().toString() + tx_correct_isya.getText();
-                    correct_shubuh = spin_shubuh.getSelectedItem().toString() + tx_correct_shubuh.getText();
-                    correct_syuruq = spin_syuruq.getSelectedItem().toString() + tx_correct_syuruq.getText();
-                    correct_dzuhur = spin_dzuhur.getSelectedItem().toString() + tx_correct_dzuhur.getText();
-                    correct_ashar = spin_ashar.getSelectedItem().toString() + tx_correct_ashar.getText();
-                    correct_maghrib = spin_maghrib.getSelectedItem().toString() + tx_correct_maghrib.getText();
-
 //                  TODO Sending bluetooth command
-                    sendBluetoothMessage("*9|" + correct_shubuh + "|" + correct_syuruq + "|" + correct_dzuhur + "|" + correct_ashar + "|" + correct_maghrib + "|" + correct_isya + "#");
-                }
+                Toast.makeText(getContext(), "*9|" + correct_shubuh + "|" + correct_syuruq + "|" + correct_zhuhur + "|" + correct_ashar + "|" + correct_maghrib + "|" + correct_isya + "#", Toast.LENGTH_SHORT).show();
+//                sendBluetoothMessage("*9|" + correct_shubuh + "|" + correct_syuruq + "|" + correct_zhuhur + "|" + correct_ashar + "|" + correct_maghrib + "|" + correct_isya + "#");
             }
         });
 
         return viewRoot;
     }
-
+    
     private void sendBluetoothMessage(String message){
         if (mBluetooth.isConnected()) {
             mBluetooth.SendMessage(message);
         } else {
             Toast.makeText(getContext(), getString(R.string.msg_error_connect), Toast.LENGTH_SHORT).show();
         }
-    }
-
-    private boolean validateText(TextInputLayout inputLayout, EditText editText) {
-        if (editText.getText().toString().trim().isEmpty()) {
-            inputLayout.setError(getString(R.string.msg_error_input));
-            editText.requestFocus();
-            return false;
-        } else {
-            inputLayout.setErrorEnabled(false);
-        }
-        return true;
     }
 }

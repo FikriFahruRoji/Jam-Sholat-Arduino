@@ -41,4 +41,6 @@
     <string name="jumat">Jum\'at</string>
     <string name="longitude">Longitude</string>
     <string name="latitude">Latitude</string>
+    <string name="koreksi">Koreksi Waktu (Dalam Menit)</string>
+    <string name="menit_default">0 Menit</string>
 </resources>
