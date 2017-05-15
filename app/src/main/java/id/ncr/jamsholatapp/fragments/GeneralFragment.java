@@ -182,7 +182,7 @@ public class GeneralFragment extends Fragment implements View.OnClickListener {
             case R.id.btn_send_buzzer:
 
 //              TODO Sending bluetooth command
-                sendBluetoothMessage(buzzer_value);
+                sendBluetoothMessage("*11|" + buzzer_value + "#");
                 break;
 
             default:
