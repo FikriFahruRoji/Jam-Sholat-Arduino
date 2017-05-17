@@ -14,14 +14,12 @@ import id.ncr.jamsholatapp.fragments.InfoFragment;
  */
 
 public class TabFragmentPager extends FragmentPagerAdapter {
-    //nama tab nya
     String[] title = new String[]{"Umum", "jeda", "Koreksi", "Info Jum'at"};
 
     public TabFragmentPager(FragmentManager fm) {
         super(fm);
     }
 
-    //method ini yang akan memanipulasi penampilan Fragment dilayar
     @Override
     public Fragment getItem(int position) {
         Fragment fragment = null;
