@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Jam Sholat App</string>
+    <string name="app_name">Jam Sholat</string>
 
     <string name="nav_menu_general">Umum</string>
     <string name="nav_menu_break">Jeda</string>

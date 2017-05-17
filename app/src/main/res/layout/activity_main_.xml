@@ -24,24 +24,25 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:layout_marginTop="5dp"
                     android:id="@+id/toolbar_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="start|center"
                     android:singleLine="true"
-                    android:text="Hello"
+                    android:text="@string/app_name"
                     android:textColor="@color/white"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/toolbar_right_subtitle"
+                    android:id="@+id/toolbar_title_second"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
-                    android:text="India Hello"
+                    android:text="Please Connest The Device"
                     android:textColor="@color/white"
-                    android:textSize="15sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
