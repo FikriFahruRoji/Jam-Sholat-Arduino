@@ -43,4 +43,5 @@
     <string name="latitude">Latitude</string>
     <string name="koreksi">Koreksi Waktu (Dalam Menit)</string>
     <string name="menit_default">0 Menit</string>
+    <string name="title_activity_test">TestActivity</string>
 </resources>

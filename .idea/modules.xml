@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Jam-Sholat-Arduino.iml" filepath="$PROJECT_DIR$/Jam-Sholat-Arduino.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JamSholatApp.iml" filepath="$PROJECT_DIR$/JamSholatApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
