@@ -42,10 +42,10 @@ public class MainActivity extends AppCompatActivity {
     private BluetoothDevice deviceToConnect;
     ArrayAdapter<String> devicesListAdapter;
 
-    public static GpsHelper gps;
+    public GpsHelper gps;
 
     BluetoothAdapter mBluetoothAdapter = null;
-    public static BluetoothHelper mBluetooth = new BluetoothHelper();
+    public BluetoothHelper mBluetooth = new BluetoothHelper();
     private String DEVICE_NAME = "";               // The name of the remote device (BlueSMIRF Gold)
 
     private Button btn_bluetooth;

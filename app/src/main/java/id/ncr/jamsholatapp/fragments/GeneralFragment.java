@@ -17,8 +17,9 @@ import android.widget.Toast;
 import id.ncr.jamsholatapp.helper.GpsHelper;
 import id.ncr.jamsholatapp.R;
 
-import static id.ncr.jamsholatapp.activities.MainActivity.gps;
-import static id.ncr.jamsholatapp.activities.MainActivity.mBluetooth;
+import static id.ncr.jamsholatapp.activities.Main.gps;
+import static id.ncr.jamsholatapp.activities.Main.mBluetooth;
+
 
 public class GeneralFragment extends Fragment implements View.OnClickListener {
 
