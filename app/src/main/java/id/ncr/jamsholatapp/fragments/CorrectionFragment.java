@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import id.ncr.jamsholatapp.R;
 
-import static id.ncr.jamsholatapp.activities.MainActivity.mBluetooth;
+import static id.ncr.jamsholatapp.activities.Main.mBluetooth;
 
 public class CorrectionFragment extends Fragment {
 
