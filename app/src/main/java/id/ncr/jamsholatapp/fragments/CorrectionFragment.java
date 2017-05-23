@@ -21,7 +21,7 @@ public class CorrectionFragment extends Fragment {
     private Button btn_send_correction;
     private TextView menit_shubuh, menit_syuruq, menit_zhuhur, menit_ashar, menit_maghrib, menit_isya;
     private SeekBar seek_shubuh, seek_syuruq, seek_zhuhur, seek_ashar, seek_maghrib, seek_isya;
-    private String correct_shubuh, correct_syuruq, correct_zhuhur, correct_ashar, correct_maghrib, correct_isya;
+    private String correct_shubuh = "+0", correct_syuruq = "+0", correct_zhuhur = "+0", correct_ashar = "+0", correct_maghrib = "+0", correct_isya = "+0";
 
     @Nullable
     @Override
@@ -163,10 +163,11 @@ public class CorrectionFragment extends Fragment {
     }
 
     private void sendBluetoothMessage(String message){
-        if (mBluetooth.isConnected()) {
-            mBluetooth.SendMessage(message);
-        } else {
-            Toast.makeText(getContext(), getString(R.string.msg_error_connect), Toast.LENGTH_SHORT).show();
-        }
+//        if (mBluetooth.isConnected()) {
+//            mBluetooth.SendMessage(message);
+//        } else {
+//            Toast.makeText(getContext(), getString(R.string.msg_error_connect), Toast.LENGTH_SHORT).show();
+//        }
+        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
     }
 }
