@@ -31,7 +31,7 @@ import static id.ncr.jamsholatapp.activities.Main.mBluetooth;
 public class GeneralFragment extends Fragment implements View.OnClickListener {
 
     private ImageButton btn_set_geo;
-    private Button btn_send_geo, btn_send_name, btn_send_addres, btn_send_brights, btn_send_buzzer;
+    private Button btn_send_geo, btn_send_name, btn_send_addres, btn_send_brights, btn_send_buzzer, btn_send_gmt;
     private EditText tx_geo_long, tx_geo_lat, tx_name, tx_addres;
     private TextInputLayout layout_tx_geo_long, layout_tx_geo_lat, layout_tx_name, layout_tx_addres;
     private RadioGroup rg_buzzer, rg_brights;
@@ -53,24 +53,24 @@ public class GeneralFragment extends Fragment implements View.OnClickListener {
                 final CharSequence[] items = {
                         "GMT-11:00 Midway",
                         "GMT-10:00 Honolulu",
-                        "GMT-08:00 Anchorage",
-                        "GMT-07:00 Los Angeles",
-                        "GMT-06:00 Chihuahua",
-                        "GMT-05:00 Chicago",
-                        "GMT-04:00 New York",
-                        "GMT-03:00 Sao Paulo",
-                        "GMT-02:00 Georgia Selatan",
-                        "GMT-01:00 Tanjung Verde",
-                        "GMT-00:00 Casablanca",
-                        "GMT+01:00 London",
-                        "GMT+02:00 Amsterdam",
-                        "GMT+03:00 Kairo",
-                        "GMT+04:00 Dubai",
-                        "GMT+05:00 Karachi",
-                        "GMT+06:00 Almaty",
-                        "GMT+07:00 Waktu Indonesia Barat",
-                        "GMT+08:00 Waktu Indonesia Tengah",
-                        "GMT+09:00 Waktu Indonesia Timur",
+                        "GMT-8:00 Anchorage",
+                        "GMT-7:00 Los Angeles",
+                        "GMT-6:00 Chihuahua",
+                        "GMT-5:00 Chicago",
+                        "GMT-4:00 New York",
+                        "GMT-3:00 Sao Paulo",
+                        "GMT-2:00 Georgia Selatan",
+                        "GMT-1:00 Tanjung Verde",
+                        "GMT-0:00 Casablanca",
+                        "GMT+1:00 London",
+                        "GMT+2:00 Amsterdam",
+                        "GMT+3:00 Kairo",
+                        "GMT+4:00 Dubai",
+                        "GMT+5:00 Karachi",
+                        "GMT+6:00 Almaty",
+                        "GMT+7:00 Waktu Indonesia Barat",
+                        "GMT+8:00 Waktu Indonesia Tengah",
+                        "GMT+9:00 Waktu Indonesia Timur",
                         "GMT+10:00 Sydney",
                         "GMT+12:00 Fiji",
                         "GMT+13:00 Tongatapu"
@@ -83,14 +83,16 @@ public class GeneralFragment extends Fragment implements View.OnClickListener {
                         String string = String.valueOf(items[item]);
                         string = string.substring(0, 6);
                         string = string.replace("GMT", "");
-                        Toast.makeText(getContext(), Integer.getInteger(string), Toast.LENGTH_SHORT).show();
+                        string = string.replace("+", "");
+                        string = string.replace(":", "");
+                        time_zone = string;
                     }
                 });
                 AlertDialog alert = builder.create();
                 alert.show();
             }
         });
-        
+
         btn_set_geo = (ImageButton) viewRoot.findViewById(R.id.btn_set_geo);
         btn_set_geo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,6 +129,8 @@ public class GeneralFragment extends Fragment implements View.OnClickListener {
         btn_send_brights.setOnClickListener(this);
         btn_send_buzzer = (Button) viewRoot.findViewById(R.id.btn_send_buzzer);
         btn_send_buzzer.setOnClickListener(this);
+        btn_send_gmt = (Button) viewRoot.findViewById(R.id.btn_send_gmt);
+        btn_send_gmt.setOnClickListener(this);
 
         layout_tx_geo_long = (TextInputLayout) viewRoot.findViewById(R.id.layout_input_geo_long);
         tx_geo_long = (EditText) viewRoot.findViewById(R.id.input_geo_long);
@@ -214,7 +218,6 @@ public class GeneralFragment extends Fragment implements View.OnClickListener {
             case R.id.btn_send_masjid_name:
                 if (validateName(layout_tx_name, tx_name)) {
                     nama_masjid = "*1|" + String.valueOf(tx_name.getText() + "#");
-
 //                  TODO Sending bluetooth command
                     sendBluetoothMessage(nama_masjid);
                 }
@@ -223,22 +226,24 @@ public class GeneralFragment extends Fragment implements View.OnClickListener {
             case R.id.btn_send_masjid_addres:
                 if (validateName(layout_tx_addres, tx_addres)) {
                     alamat_masjid = "*2|" + String.valueOf(tx_addres.getText()) + "#";
-
 //                  TODO Sending bluetooth command
                     sendBluetoothMessage(alamat_masjid);
                 }
                 break;
 
             case R.id.btn_send_brights:
-
 //              TODO Sending bluetooth command
                 sendBluetoothMessage("*5|" + brights_value + "#");
                 break;
 
             case R.id.btn_send_buzzer:
-
 //              TODO Sending bluetooth command
                 sendBluetoothMessage("*11|" + buzzer_value + "#");
+                break;
+
+            case R.id.btn_send_gmt:
+//              TODO Sending bluetooth command
+                sendBluetoothMessage("*7|" + time_zone + "#");
                 break;
 
             default:
