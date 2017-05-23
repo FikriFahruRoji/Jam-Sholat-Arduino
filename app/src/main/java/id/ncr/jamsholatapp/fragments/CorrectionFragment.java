@@ -33,11 +33,11 @@ public class CorrectionFragment extends Fragment {
         seek_shubuh.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                menit_shubuh.setText(String.valueOf(progress-10) + " Menit");
+                correct_shubuh = String.valueOf(progress-10);
                 if ((progress - 10) < 0){
-                    correct_shubuh = String.valueOf(progress-10);
+                    menit_shubuh.setText(String.valueOf(progress-10) + " Menit");
                 } else {
-                    correct_shubuh = "+" + String.valueOf(progress-10);
+                    menit_shubuh.setText("+" + String.valueOf(progress-10) + " Menit");
                 }
             }
 
@@ -53,11 +53,11 @@ public class CorrectionFragment extends Fragment {
         seek_syuruq.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                menit_syuruq.setText(String.valueOf(progress-10) + " Menit");
+                correct_syuruq = String.valueOf(progress-10);
                 if ((progress - 10) < 0){
-                    correct_syuruq = String.valueOf(progress-10);
+                    menit_syuruq.setText(String.valueOf(progress-10) + " Menit");
                 } else {
-                    correct_syuruq = "+" + String.valueOf(progress-10);
+                    menit_syuruq.setText("+" + String.valueOf(progress-10) + " Menit");
                 }
             }
 
@@ -73,11 +73,11 @@ public class CorrectionFragment extends Fragment {
         seek_zhuhur.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                menit_zhuhur.setText(String.valueOf(progress-10) + " Menit");
+                correct_zhuhur = String.valueOf(progress-10);
                 if ((progress - 10) < 0){
-                    correct_zhuhur = String.valueOf(progress-10);
+                    menit_zhuhur.setText(String.valueOf(progress-10) + " Menit");
                 } else {
-                    correct_zhuhur = "+" + String.valueOf(progress-10);
+                    menit_zhuhur.setText("+" + String.valueOf(progress-10) + " Menit");
                 }
             }
 
@@ -93,11 +93,11 @@ public class CorrectionFragment extends Fragment {
         seek_ashar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                menit_ashar.setText(String.valueOf(progress-10) + " Menit");
+                correct_ashar = String.valueOf(progress-10);
                 if ((progress - 10) < 0){
-                    correct_ashar = String.valueOf(progress-10);
+                    menit_ashar.setText(String.valueOf(progress-10) + " Menit");
                 } else {
-                    correct_ashar = "+" + String.valueOf(progress-10);
+                    menit_ashar.setText("+" + String.valueOf(progress-10) + " Menit");
                 }
             }
 
@@ -113,11 +113,11 @@ public class CorrectionFragment extends Fragment {
         seek_maghrib.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                menit_maghrib.setText(String.valueOf(progress-10) + " Menit");
+                correct_maghrib = String.valueOf(progress-10);
                 if ((progress - 10) < 0){
-                    correct_maghrib = String.valueOf(progress-10);
+                    menit_maghrib.setText(String.valueOf(progress-10) + " Menit");
                 } else {
-                    correct_maghrib = "+" + String.valueOf(progress-10);
+                    menit_maghrib.setText("+" + String.valueOf(progress-10) + " Menit");
                 }
             }
 
@@ -133,11 +133,11 @@ public class CorrectionFragment extends Fragment {
         seek_isya.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                menit_isya.setText(String.valueOf(progress-10) + " Menit");
+                correct_isya = String.valueOf(progress-10);
                 if ((progress - 10) < 0){
-                    correct_isya = String.valueOf(progress-10);
+                    menit_isya.setText(String.valueOf(progress-10) + " Menit");
                 } else {
-                    correct_isya = "+" + String.valueOf(progress-10);
+                    menit_isya.setText("+" + String.valueOf(progress-10) + " Menit");
                 }
             }
 
@@ -163,11 +163,11 @@ public class CorrectionFragment extends Fragment {
     }
 
     private void sendBluetoothMessage(String message){
-//        if (mBluetooth.isConnected()) {
-//            mBluetooth.SendMessage(message);
-//        } else {
-//            Toast.makeText(getContext(), getString(R.string.msg_error_connect), Toast.LENGTH_SHORT).show();
-//        }
-        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+        if (mBluetooth.isConnected()) {
+            mBluetooth.SendMessage(message);
+        } else {
+            Toast.makeText(getContext(), getString(R.string.msg_error_connect), Toast.LENGTH_SHORT).show();
+        }
+//        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
     }
 }
