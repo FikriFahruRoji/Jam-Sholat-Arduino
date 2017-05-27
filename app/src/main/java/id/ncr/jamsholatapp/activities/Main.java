@@ -85,7 +85,7 @@ public class Main extends AppCompatActivity {
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         // Check if Bluetooth is supported by the device
-        checkBluetoothSupported();
+//        checkBluetoothSupported();
 
         final Drawable btDisable = this.getResources().getDrawable( R.drawable.ic_bluetooth_disabled_white_24dp);
         final Drawable bt = this.getResources().getDrawable( R.drawable.ic_bluetooth_white_24dp);

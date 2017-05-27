@@ -74,12 +74,12 @@ public class BreakFragment extends Fragment implements View.OnClickListener {
     }
 
     private void sendBluetoothMessage(String message){
-        if (mBluetooth.isConnected()) {
-            mBluetooth.SendMessage(message);
-        } else {
-            Toast.makeText(getContext(), getString(R.string.msg_error_connect), Toast.LENGTH_SHORT).show();
-        }
-//        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+//        if (mBluetooth.isConnected()) {
+//            mBluetooth.SendMessage(message);
+//        } else {
+//            Toast.makeText(getContext(), getString(R.string.msg_error_connect), Toast.LENGTH_SHORT).show();
+//        }
+        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -99,7 +99,7 @@ public class BreakFragment extends Fragment implements View.OnClickListener {
                     iqoma_ashar = String.valueOf(tx_iqoma_ashar.getText());
                     iqoma_maghrib = String.valueOf(tx_iqoma_maghrib.getText());
 
-                    messageCommand = "*10|" + iqoma_shubuh + "|" + iqoma_zhuhur + "|" + iqoma_ashar + "|" + iqoma_maghrib + "|" + iqoma_isya + "#";
+                    messageCommand = "*9|" + iqoma_shubuh + "|" + iqoma_zhuhur + "|" + iqoma_ashar + "|" + iqoma_maghrib + "|" + iqoma_isya + "#";
 //                  TODO Sending bluetooth command
                     sendBluetoothMessage(messageCommand);
                 }
@@ -120,7 +120,7 @@ public class BreakFragment extends Fragment implements View.OnClickListener {
                     layar_isya = String.valueOf(tx_layar_isya.getText());
                     layar_jumat = String.valueOf(tx_layar_jumat.getText());
 
-                    messageCommand = "*11|" + layar_shubuh + "|" + layar_zhuhur + "|" + layar_zhuhur + "|" + layar_maghrib + "|" + layar_isya + "|" + layar_jumat + "#";
+                    messageCommand = "*10|" + layar_shubuh + "|" + layar_zhuhur + "|" + layar_zhuhur + "|" + layar_maghrib + "|" + layar_isya + "|" + layar_jumat + "#";
 //                  TODO Sending bluetooth command
                     sendBluetoothMessage(messageCommand);
                 }

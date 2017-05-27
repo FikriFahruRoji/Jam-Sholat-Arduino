@@ -154,7 +154,7 @@ public class CorrectionFragment extends Fragment {
             @Override
             public void onClick(View v) {
 //                  TODO Sending bluetooth command
-                Toast.makeText(getContext(), "*9|" + correct_shubuh + "|" + correct_syuruq + "|" + correct_zhuhur + "|" + correct_ashar + "|" + correct_maghrib + "|" + correct_isya + "#", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "*8|" + correct_shubuh + "|" + correct_syuruq + "|" + correct_zhuhur + "|" + correct_ashar + "|" + correct_maghrib + "|" + correct_isya + "#", Toast.LENGTH_SHORT).show();
 //                sendBluetoothMessage("*9|" + correct_shubuh + "|" + correct_syuruq + "|" + correct_zhuhur + "|" + correct_ashar + "|" + correct_maghrib + "|" + correct_isya + "#");
             }
         });
@@ -163,11 +163,11 @@ public class CorrectionFragment extends Fragment {
     }
 
     private void sendBluetoothMessage(String message){
-        if (mBluetooth.isConnected()) {
-            mBluetooth.SendMessage(message);
-        } else {
-            Toast.makeText(getContext(), getString(R.string.msg_error_connect), Toast.LENGTH_SHORT).show();
-        }
-//        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+//        if (mBluetooth.isConnected()) {
+//            mBluetooth.SendMessage(message);
+//        } else {
+//            Toast.makeText(getContext(), getString(R.string.msg_error_connect), Toast.LENGTH_SHORT).show();
+//        }
+        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
     }
 }

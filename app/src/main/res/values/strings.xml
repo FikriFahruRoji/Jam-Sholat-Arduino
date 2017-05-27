@@ -45,4 +45,6 @@
     <string name="menit_default">0 Menit</string>
     <string name="title_activity_test">TestActivity</string>
     <string name="time_zone">Time Zone</string>
+    <string name="jam">Sinkronisasi Jam</string>
+    <string name="waktu">Singkronisasi Waktu</string>
 </resources>

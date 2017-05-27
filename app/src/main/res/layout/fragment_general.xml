@@ -96,6 +96,7 @@
                             android:text="@string/time_zone"/>
 
                         <TextView
+                            android:id="@+id/tx_time_zone"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="16sp"
@@ -104,6 +105,44 @@
 
                     <Button
                         android:id="@+id/btn_send_gmt"
+                        style="@style/button_send"/>
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/card_view">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/card_margin_inside"
+                    android:orientation="vertical">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/layout_input_jam"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/input_jam"
+                            style="@style/text_input"
+                            android:hint="@string/waktu"
+                            android:maxLength="50" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <DigitalClock
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:id="@+id/clock"
+                        android:textStyle="bold"
+                        android:textSize="50sp"
+                        android:visibility="gone"
+                        android:textColor="@color/black" />
+
+                    <Button
+                        android:id="@+id/btn_send_time"
                         style="@style/button_send"/>
                 </LinearLayout>
 

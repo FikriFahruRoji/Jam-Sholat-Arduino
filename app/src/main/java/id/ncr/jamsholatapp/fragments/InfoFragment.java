@@ -59,12 +59,12 @@ public class InfoFragment extends Fragment implements View.OnClickListener{
     }
 
     private void sendBluetoothMessage(String message){
-        if (mBluetooth.isConnected()) {
-            mBluetooth.SendMessage(message);
-        } else {
-            Toast.makeText(getContext(), getString(R.string.msg_error_connect), Toast.LENGTH_SHORT).show();
-        }
-//        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+//        if (mBluetooth.isConnected()) {
+//            mBluetooth.SendMessage(message);
+//        } else {
+//            Toast.makeText(getContext(), getString(R.string.msg_error_connect), Toast.LENGTH_SHORT).show();
+//        }
+        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -80,7 +80,7 @@ public class InfoFragment extends Fragment implements View.OnClickListener{
                     imam = String.valueOf(tx_imam.getText());
                     muadzin = String.valueOf(tx_muadzin.getText());
 
-                    messageComand = "*4|" + imam + "|" + khutbah + "|" + muadzin + "#";
+                    messageComand = "*3|" + imam + "|" + khutbah + "|" + muadzin + "#";
 //                  TODO Sending bluetooth command
                     sendBluetoothMessage(messageComand);
                 }
@@ -90,7 +90,7 @@ public class InfoFragment extends Fragment implements View.OnClickListener{
                 if (validateName(layout_tx_pengumuman, tx_pengumuman)) {
                     pengumuman = String.valueOf(tx_pengumuman.getText());
 
-                    messageComand = "*3|" + pengumuman + "#";
+                    messageComand = "*14|" + pengumuman + "#";
 //                  TODO Sending bluetooth command
                     sendBluetoothMessage(messageComand);
                 }
