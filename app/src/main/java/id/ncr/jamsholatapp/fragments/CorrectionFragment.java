@@ -163,11 +163,11 @@ public class CorrectionFragment extends Fragment {
     }
 
     private void sendBluetoothMessage(String message){
-//        if (mBluetooth.isConnected()) {
-//            mBluetooth.SendMessage(message);
-//        } else {
-//            Toast.makeText(getContext(), getString(R.string.msg_error_connect), Toast.LENGTH_SHORT).show();
-//        }
-        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+        if (mBluetooth.isConnected()) {
+            mBluetooth.SendMessage(message);
+        } else {
+            Toast.makeText(getContext(), getString(R.string.msg_error_connect), Toast.LENGTH_SHORT).show();
+        }
+//        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
     }
 }
